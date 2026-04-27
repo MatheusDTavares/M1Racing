@@ -12,7 +12,7 @@ USE aquatech;
 
 CREATE TABLE empresa (
 	id INT PRIMARY KEY AUTO_INCREMENT,
-	razao_social VARCHAR(50),
+	nome VARCHAR(50),
 	cnpj CHAR(14),
 	codigo_ativacao VARCHAR(50)
 );
@@ -37,7 +37,7 @@ CREATE TABLE aviso (
 create table aquario (
 /* em nossa regra de negócio, um aquario tem apenas um sensor */
 	id INT PRIMARY KEY AUTO_INCREMENT,
-	descricao VARCHAR(300),
+	descricao VARCHAR(300),	
 	fk_empresa INT,
 	FOREIGN KEY (fk_empresa) REFERENCES empresa(id)
 );
