@@ -5,7 +5,9 @@ CREATE TABLE usuario (
 	id INT PRIMARY KEY AUTO_INCREMENT,
 	nome VARCHAR(50),
 	email VARCHAR(50),
-	senha VARCHAR(100)
+	senha VARCHAR(100),
+	saldo int default 0,
+	ultimo_login date
 );
 
 CREATE TABLE pilotos (
@@ -34,6 +36,15 @@ CREATE TABLE usuario_equipe (
 	fk_equipe INT,
 	FOREIGN KEY (fk_usuario) REFERENCES usuario(id),
 	FOREIGN KEY (fk_equipe) REFERENCES equipe(id)
+);
+
+create table aposta(
+id int priamry key AUTO_INCREMENT,
+fk_usuario int,
+pilotos varchar(50),
+valor int,
+resultado varchar(50),
+foreign key (fk_usuario) references usuario(id)
 );
 
 INSERT INTO pilotos (nome, nacionalidade) VALUES
