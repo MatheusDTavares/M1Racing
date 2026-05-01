@@ -27,10 +27,10 @@
             <a href="simulador.html">Corrida</a>
           </li>
           <li>|</li>
-          <li>
+          <li id="menuLogin">
             <button class="botao1"><a href="login.html"><strong>Login</strong></a></button>
           </li>
-          <li>
+          <li id="menuCadastro">
             <button class="botao2"><a href="cadastro.html"><strong>Cadastro</strong></a></button>
           </li>
         </ul>
@@ -178,6 +178,16 @@
         </div>
     </div>
   </body>
+<script>
+  window.onload = function() {
+    const nome = sessionStorage.NOME_USUARIO;
 
+    if (nome) {
+        // Usuário logado → troca os botões por "Perfil"
+        document.getElementById("menuLogin").innerHTML = `<a href="./perfil.html">${nome}</a>`;
+        document.getElementById("menuCadastro").style.display = "none";
+    }
+};
+</script>
 </html>
 
