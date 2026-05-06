@@ -167,60 +167,20 @@
                     <div class="pergunta-pesquisa">
                         <p>6. O que você acha do novo formato de Sprint?</p>
                         <label>
-                            <input type="radio" name="tipo_jogo" value="Ofensivo">
-                            Ofensivo
+                            <input type="radio" name="tipo_jogo" value="NaoGostei">
+                            Não Gostei
                         </label>
                         <label>
-                            <input type="radio" name="tipo_jogo" value="Defensivo">
-                            Defensivo
+                            <input type="radio" name="tipo_jogo" value="Nada">
+                            Não mudou em Nada
                         </label>
                         <label>
-                            <input type="radio" name="tipo_jogo" value="Allround">
+                            <input type="radio" name="tipo_jogo" value="Gostei">
                             Allround
                         </label>
                     </div>
-                    <div class="pergunta-pesquisa">
-                        <p>7. Com que frequência você joga?</p>
-                        <label>
-                            <input type="radio" name="frequencia" value="Menos de uma vez por semana">
-                            Menos de uma vez por semana
-                        </label>
-                        <label>
-                            <input type="radio" name="frequencia" value="Uma vez por semana">
-                            Uma vez por semana
-                        </label>
-                        <label>
-                            <input type="radio" name="frequencia" value="Duas a três vezes por semana">
-                            Duas a três vezes por semana
-                        </label>
-                        <label>
-                            <input type="radio" name="frequencia" value="Mais de três vezes por semana">
-                            Mais de três vezes por semana
-                        </label>
-                    </div>
-                    <div class="pergunta-pesquisa" id="pergunta-pesquisa">
-                        <p>8. Qual é o conteúdo que você tem mais interesse?</p>
-                        <label>
-                            <input type="radio" name="conteudo" id="ipt_conteudo" value="Regras">
-                            Regras
-                        </label>
-                        <label>
-                            <input type="radio" name="conteudo" id="ipt_conteudo" value="Equipamentos">
-                            Equipamentos
-                        </label>
-                        <label>
-                            <input type="radio" name="conteudo" id="ipt_conteudo" value="Técnicas">
-                            Técnicas
-                        </label>
-                        <label>
-                            <input type="radio" name="conteudo" id="ipt_conteudo" value="Treinos">
-                            Treinos
-                        </label>
-                        <label>
-                            <input type="radio" name="conteudo" id="ipt_conteudo" value="Outros">
-                            Outros
-                        </label>
-                    </div>
+                    
+                    
                         <div id="botaodiv">
                             <button onclick="guardar()" id="botao">Envie suas resposta!</button>
                         </div>
@@ -280,7 +240,7 @@
 
     function guardar() {
         var idUsuario = sessionStorage.ID_USUARIO;
-        var estado = document.getElementById("ipt_estado").value;
+        var piloto = document.getElementById("ipt_piloto").value;
         var interesse = getCheckedValue("interesse");
         var nivel = getCheckedValue("nivel");
         var tempo = getCheckedValue("tempo");
