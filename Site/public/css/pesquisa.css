@@ -1,8 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit&display=swap');
+
+
+:root{
+     --tamanho-header: 20vh;
+}
 body {
     font-family: 'Outfit', sans-serif;
     background-color: #1c1c1c;
 }
+
 
 .pesquisa {
     background:
@@ -227,4 +233,36 @@ body {
 
 .popup-card button:active {
     background-color: #a61b1b;
+}
+.header {
+  height: var(--tamanho-header);
+  border-bottom: 2px solid #FF1801;
+  position: sticky;
+  top: 0px;
+  background-color: #15151e;
+  z-index: 999;
+}
+
+.header img{
+  width: 150px;
+  height: 85px;
+}
+
+.header .container {
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  padding: 10px;
+}
+
+.header a {
+  text-decoration: none;
+    color: white;
+    font-weight: normal;
+}
+
+.container {
+  display: flex;
+  width: 80%;
+  margin: auto;
 }

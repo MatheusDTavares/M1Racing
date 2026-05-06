@@ -3,37 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Entre no TopSpinTT</title>
+    <title>Contribua com a M1Racing</title>
     <link rel="stylesheet" href="./css/estilo.css">
     <link rel="stylesheet" href="./css/pesquisa.css">
     <link rel="shortcut icon" type="imagex/png" href="./assets/logo/icone.png">
     <script src="./script/sessao.js"></script>
 </head>
 <body>
-    <header>
-
-
-        <nav>
-            <div class="logo">
-                <a href="index.html"><img src="assets/logo/logo.png" alt="Logo"></a>
-            </div>
-                <div class="navbar">
-                    <ul>
-                        <li><a href="./index.html">Home</a></li>
-                        <li><a href="./blog.html">Blog</a></li>
-                        <li><a href="./sobre.html">Sobre mim</a></li>
-                        <li><a href="./estatisticas.html">Estatísticas</a></li>
-                        
-                    </ul>
-                </div>
-                <div id="usuario" class="login-cadastro">
-                    <ul>
-                        <li><a class="entrar" href="login.html">Entrar</a></li>
-                        <li><a class="cadastrar" href="cadastro.html">Cadastre-se</a></li>
-                    </ul>
-                </div>
-            </nav>
-        </header>
+     <div class="header">
+      <div class="container">
+        <a href="#"><h1 class="titulo"><img src="./assets/icon/m1racing.png" alt=""></h1></a>
+        <ul class="navbar">
+          <li><a href="simulador.html">Corrida</a></li>
+          <li>|</li>
+          <li id="menuLogin"><button class="botao1"><a href="login.html"><strong>Login</strong></a></button></li>
+          <li id="menuCadastro"><button class="botao2"><a href="cadastro.html"><strong>Cadastro</strong></a></button></li>
+        </ul>
+      </div>
+    </div>
+        
         
     <main>
         <div class="pesquisa" id="pesquisa">
@@ -98,50 +86,86 @@
                             Apenas o Treino
                         </label>
                         <label>
-                            <input type="radio" name="nivel" value="Avançado">
-                            Avançado
+                            <input type="radio" name="nivel" value="Qualificação">
+                            Apenas o Qualify
                         </label>
                         <label>
                             <input type="radio" name="nivel" value="Corrida">
                             A Corrida mas durmo no Sofá
                         </label>
-                    </div>
-                    <div class="pergunta-pesquisa">
-                        <p>4. Há quanto tempo você joga?</p>
                         <label>
-                            <input type="radio" name="tempo" value="Menos de 1 ano">
-                            Menos de 1 ano
-                        </label>
-                        <label>
-                            <input type="radio" name="tempo" value="1 a 5 anos">
-                            1 a 5 anos
-                        </label>
-                        <label>
-                            <input type="radio" name="tempo" value="5 a 10 anos">
-                            5 a 10 anos
-                        </label>
-                        <label>
-                            <input type="radio" name="tempo" value="Mais de 10 anos">
-                            Mais de 10 anos
+                            <input type="radio" name="nivel" value="Nada">
+                            Não assisto, apenas vejo o resultado    
                         </label>
                     </div>
                     <div class="pergunta-pesquisa">
-                        <p>5. Qual é a sua empunhadura?</p>
+                        <p>4. Qual é a sua equipe do coração?</p>
                         <label>
-                            <input type="radio" name="empunhadura" value="Clássico">
-                            Clássico
+                            <input type="radio" name="tempo" value="Mercedes">
+                            Mercedes
                         </label>
                         <label>
-                            <input type="radio" name="empunhadura" value="Caneta">
-                            Caneta
+                            <input type="radio" name="tempo" value="McLaren">
+                            McLaren
                         </label>
                         <label>
-                            <input type="radio" name="empunhadura" value="Classineta">
-                            Classineta
+                            <input type="radio" name="tempo" value="Audi">
+                            Audi
+                        </label>
+                        <label>
+                            <input type="radio" name="tempo" value="Red Bull">
+                            Red Bull Racing
+                        </label>
+                        <label>
+                            <input type="radio" name="tempo" value="Ferrari">
+                            Ferrari
+                        </label>
+                        <label>
+                            <input type="radio" name="tempo" value="Aston Martin">
+                            Aston Martin
+                        </label>
+                        <label>
+                            <input type="radio" name="tempo" value="Alpine">
+                            Alpine
+                        </label>
+                        <label>
+                            <input type="radio" name="tempo" value="Williams">
+                            Williams
+                        </label>
+                        <label>
+                            <input type="radio" name="tempo" value="Haas">
+                            Haas
+                        </label>
+                        <label>
+                            <input type="radio" name="tempo" value="RB">
+                            Racing Bulls
+                        </label>
+                        <label>
+                            <input type="radio" name="tempo" value="Cadillac">
+                            Cadillac
                         </label>
                     </div>
                     <div class="pergunta-pesquisa">
-                        <p>6. Que tipo de jogo você prefere?</p>
+                        <p>5. O que te atraiu para a Fórmula 1?</p>
+                        <label>
+                            <input type="radio" name="empunhadura" value="Velocidade">
+                            Velocidade
+                        </label>
+                        <label>
+                            <input type="radio" name="empunhadura" value="Tecnologia">
+                            Tecnologia
+                        </label>
+                        <label>
+                            <input type="radio" name="empunhadura" value="Pilotos">
+                            Pilotos
+                        </label>
+                        <label>
+                            <input type="radio" name="empunhadura" value="Outros">
+                            Outros
+                        </label>
+                    </div>
+                    <div class="pergunta-pesquisa">
+                        <p>6. O que você acha do novo formato de Sprint?</p>
                         <label>
                             <input type="radio" name="tipo_jogo" value="Ofensivo">
                             Ofensivo
@@ -220,36 +244,24 @@
     </main>
     
     <footer>
-        <div class="footer-content novo-footer">
+        
+    <div class="footer">
+        <div class="container">
+            <div class="footer-content novo-footer">
             <div class="footer-logo">
-                <img src="./assets/logo/logo.png" alt="Logo TopSpinTT" style="height:70px;">
+                <img src="./assets/icon/m1racing.png" style="height:70px;">
             </div>
-            <div class="footer-links">
-                <div>
-                    <h4>Site</h4>
-                    <div class="itens">
-                    <a href="./index.html">Home</a>
-                    <a href="./blog.html">Blog</a>
-                    <a href="./sobremim.html">Sobre mim</a>
-                    <a href="./estatisticas.html">Estatísticas</a>
-                    <a href="./pesquisa.html">Pesquisa</a>
-                    </div>
-                </div>
-                <div>
-                    <h4>Área do usuário</h4>
-                    <div class="itens">
-                    <a href="./login.html">Login</a>
-                    <a href="./cadastro.html">Cadastro</a>
-                    </div>
-                </div>
-            </div>
+            <h4>Feito por <a href="./sobre mim.html">Matheus.Tavares</a> &hearts; SPTech &copy; 2026</h4>
+            <span class="version">v1.0.0</span>
             <div class="footer-social">
                 <h4>Contato</h4>
-                <p>Email: topspintt@sptech.school</p>
+                <p>Email: M1Racing@sptech.school</p>
             </div>
-        </div>
+            </div>
+        </div>    
+    </div>
         <div class="footer-copy">
-            <p>&copy; 2025 TopSpinTT &mdash; Todos os direitos reservados.</p>
+            <p>&copy; 2026 M1Racing &mdash; Todos os direitos reservados.</p>
         </div> 
     </footer>
 </body>
