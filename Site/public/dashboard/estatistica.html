@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entre no M1Racing</title>
+    <link rel="stylesheet" href="./css/estilo.css">
+    <link rel="stylesheet" href="./css/estatisticas.css">
+    <link rel="shortcut icon" type="imagex/png" href="./assets/logo/icone.png">
+    <script src="./script/sessao.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body onload="obterDadosGrafico()">
+    <div class="header">
+      <div class="container">
+        <a href="#"><h1 class="titulo"><img src="./assets/icon/m1racing.png" alt=""></h1></a>
+        <ul class="navbar">
+          <li><a href="simulador.html">Corrida</a></li>
+          <li>|</li>
+          <li id="menuLogin"><button class="botao1"><a href="login.html"><strong>Login</strong></a></button></li>
+          <li id="menuCadastro"><button class="botao2"><a href="cadastro.html"><strong>Cadastro</strong></a></button></li>
+        </ul>
+      </div>
+    </div>
+    
+    <main>
+        <div class="pesquisa-banner">
+            <div class="caixa-pesquisa">
+                <h2>Responda o formulário e ajude o site a melhorar!</h2>
+                <button onclick="location.href='./pesquisa.html';">Iniciar pesquisa</button>
+                <a href="#anchor">Veja a Seguir a Opnião das Pessoas</a>
+            </div>
+        </div>
+        <div class="tela-graficos" id="anchor">
+            <h1>Estatísticas Gerais</h1>
+            <div class="info-cards">
+                <h2>Regiões dos jogadores</h2>
+                <div class="conteudo-info">
+                    <div class="grafico">
+                        <canvas id="regiaoGrafico"></canvas>
+                    </div>
+                    <div class="info-kpi">
+                      <div class="card a">
+                        <h3>Estado com mais jogadores:</h3>
+                        <div class="kpi">
+                          <div class="valor" id="valor">
+                            <p id="maiorEstado"></p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="card">
+                        <h3>Estado com menos jogadores:</h3>
+                        <div class="kpi">
+                          <div class="valor" id="valor">
+                            <p id="menorEstado"></p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="info-cards">
+                <h2>Nível dos Jogadores</h2>
+                <div class="conteudo-info">
+                    <div class="grafico">
+                        <canvas id="nivelGrafico"></canvas>
+                    </div>
+                    <div class="info-kpi">
+                        <div class="card a">
+                            <h3>Nível com mais jogadores:</h3>
+                            <div class="kpi">
+                                <div class="valor">
+                                    <p id="maiorNivel"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <h3>Nível com menos jogadores:</h3>
+                            <div class="kpi">
+                                <div class="valor">
+                                    <p id="menorNivel"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="info-cards">
+                <h2>Faixa etária dos atletas</h2>
+                <div class="conteudo-info">
+                    <div class="grafico">
+                        <canvas id="faixaEtariaGrafico"></canvas>
+                    </div>
+                    <div class="info-kpi">
+                        <div class="card a">
+                            <h3>Faixa com mais atletas:</h3>
+                            <div class="kpi">
+                                <div class="valor" id="valor">
+                                    <p id="maiorFaixa"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <h3>Faixa com menos atletas:</h3>
+                            <div class="kpi">
+                                <div class="valor" id="valor">
+                                    <p id="menorFaixa"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="info-cards">
+                <h2>Tipos de Jogo</h2>
+                <div class="conteudo-info">
+                    <div class="grafico">
+                        <canvas id="tiposJogoGrafico"></canvas>
+                    </div>
+                    <div class="info-kpi">
+                        <div class="card a">
+                            <h3>Tipo com mais jogadores:</h3>
+                            <div class="kpi">
+                                <div class="valor">
+                                    <p id="maiorTipo"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <h3>Tipo com menos jogadores:</h3>
+                            <div class="kpi">
+                                <div class="valor">
+                                    <p id="menorTipo"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div class="footer">
+        <div class="container">
+            <div class="footer-content novo-footer">
+            <div class="footer-logo">
+                <img src="./assets/icon/m1racing.png" style="height:70px;">
+            </div>
+            <h4>Feito por <a href="./sobre mim.html">Matheus.Tavares</a> &hearts; SPTech &copy; 2026</h4>
+            <span class="version">v1.0.0</span>
+           
+            </div>
+        </div>    
+    </div>
+</body>
+<script>
+    validarSessao();
+    let dashboard = [];
+    function obterDadosGrafico() {
+    console.log(`Recuperando resultados gerais`);
+    let regiao = null;
+    let niveis = null;
+    let faixaEtaria = null;
+    let tiposJogo = null;
+
+    fetch('/resultados/regioes')
+        .then(function (response) {
+            if (response.ok) {
+                return response.json();
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API (regioes)');
+                return [];
+            }
+        })
+        .then(function (dadosRegiao) {
+            regiao = dadosRegiao[0];
+            if (regiao !== null && niveis !== null && faixaEtaria !== null && tiposJogo !== null) {
+                plotarGrafico({ regiao, niveis, faixaEtaria, tiposJogo });
+            }
+        })
+        .catch(function (error) {
+            console.error(`Erro na obtenção dos dados p/ gráfico (regioes): ${error.message}`);
+        });
+
+    fetch('/resultados/niveis')
+        .then(function (response) {
+            if (response.ok) {
+                return response.json();
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API (niveis)');
+                return [];
+            }
+        })
+        .then(function (dadosNiveis) {
+              niveis = dadosNiveis[0];
+                let nivelMax = dadosNiveis[1].Nivel;
+                let valorMax = dadosNiveis[1].total;
+                let nivelMin = dadosNiveis[2].Nivel;
+                let valorMin = dadosNiveis[2].total;
+                maiorNivel.innerHTML = `${nivelMax} (${valorMax})`;
+                menorNivel.innerHTML = `${nivelMin} (${valorMin})`;
+
+            if (regiao !== null && niveis !== null && faixaEtaria !== null && tiposJogo !== null) {
+                plotarGrafico({ regiao, niveis, faixaEtaria, tiposJogo });
+            }
+        })
+        .catch(function (error) {
+            console.error(`Erro na obtenção dos dados p/ gráfico (niveis): ${error.message}`);
+        });
+
+    fetch('/resultados/faixaetaria')
+        .then(function (response) {
+            if (response.ok) {
+                return response.json();
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API (niveis)');
+                return [];
+            }
+        })
+        .then(function (dadosFaixaEtaria) {
+            faixaEtaria = dadosFaixaEtaria[0];
+                let faixaMax = dadosFaixaEtaria[1].faixaEtaria;
+                let valorFaixaMax = dadosFaixaEtaria[1].total;
+                let faixaMin = dadosFaixaEtaria[2].faixaEtaria;
+                let valorFaixaMin = dadosFaixaEtaria[2].total;
+                maiorFaixa.innerHTML = `${faixaMax} (${valorFaixaMax})`;
+                menorFaixa.innerHTML = `${faixaMin} (${valorFaixaMin})`;
+            console.log(`Dados recebidos: ${JSON.stringify({ regiao, niveis, faixaEtaria })}`);
+            if (regiao !== null && niveis !== null && faixaEtaria !== null && tiposJogo !== null) {
+                plotarGrafico({ regiao, niveis, faixaEtaria, tiposJogo });
+            }
+        })
+        .catch(function (error) {
+            console.error(`Erro na obtenção dos dados p/ gráfico (niveis): ${error.message}`);
+        });
+
+        fetch('/resultados/estados')
+    .then(function (response) {
+        if (response.ok) {
+            return response.json()
+            .then(function(estados) {
+                    let estadoMax = estados[1].Estado;
+                    let valorMax = estados[1].total;
+                    let estadoMin = estados[2].Estado;
+                    let valorMin = estados[2].total;
+                    maiorEstado.innerHTML = `${estadoMax} (${valorMax})`;
+                    menorEstado.innerHTML = `${estadoMin} (${valorMin})`;
+            });
+        } else {
+            console.error('Nenhum dado encontrado ou erro na API (maiorEstado)');
+        }
+    })
+    .catch(function (error) {
+        console.error('Erro ao buscar maiorEstado:', error);
+    });
+
+    fetch('/resultados/tiposJogo')
+        .then(function (response) {
+            if (response.ok) {
+                return response.json();
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API (tiposJogo)');
+                return [];
+            }
+        })
+        .then(function (dadosTiposJogo) {
+            tiposJogo = dadosTiposJogo[0];
+                let tipoJogoMax = dadosTiposJogo[1].TipoJogo;
+                let valorMax = dadosTiposJogo[1].total;
+                let tipoJogoMin = dadosTiposJogo[2].TipoJogo;
+                let valorMin = dadosTiposJogo[2].total;
+                maiorTipo.innerHTML = `${tipoJogoMax} (${valorMax})`;
+                menorTipo.innerHTML = `${tipoJogoMin} (${valorMin})`;
+            if (regiao !== null && niveis !== null && faixaEtaria !== null && tiposJogo !== null) {
+                plotarGrafico({ regiao, niveis, faixaEtaria, tiposJogo });
+            }
+        })
+        .catch(function (error) {
+            console.error('Erro na obtenção dos dados p/ gráfico (tiposJogo): ' + error.message);
+        });
+    }
+
+function plotarGrafico(resposta) {
+    let labelRegiao = [];
+    let labelNivel = [];
+    let labelFaixaEtaria = [];
+    let labeltipos = [];
+
+    const cores = {
+        regiao: ['#1abc9c', '#f1c40f', '#e67e22', '#2980b9', '#8e44ad'],
+        nivel: ['#2980b9', '#27ae60', '#e67e22', '#c0392b'],
+        faixaEtaria: ['#8e44ad', '#f1c40f', '#e67e22', '#27ae60'],
+        tipoJogo: ['#e67e22', '#2980b9', '#27ae60']
+    };
+
+    // Gráfico de Regiões
+    let regiao = resposta.regiao;
+    let regiaoGrafico = {
+        labels: labelRegiao,
+        datasets: [{
+            label: 'Regiões',
+            data: [],
+            backgroundColor: cores.regiao,
+            borderColor: '#1d1d1d',
+            borderWidth: 1
+        }]
+    };
+    let totalRegiao = 0;
+    for (let i = 0; i < regiao.length; i++) {
+        var regiaoatual = regiao[i];
+        labelRegiao.push(regiaoatual.Regiao || regiaoatual.regiao);
+        regiaoGrafico.datasets[0].data.push(regiaoatual.total); // valor inteiro
+        totalRegiao += regiaoatual.total;
+    }
+
+    // Gráfico de Níveis
+    let niveis = resposta.niveis;
+    let nivelGrafico = {
+        labels: labelNivel,
+        datasets: [{
+            label: 'Níveis',
+            data: [],
+            backgroundColor: cores.nivel,
+        }]
+    };
+    let totalNivel = 0;
+    for (let i = 0; i < niveis.length; i++) {
+        var nivel = niveis[i];
+        labelNivel.push(nivel.Nivel || nivel.nivel);
+        nivelGrafico.datasets[0].data.push(nivel.total);
+        totalNivel += nivel.total;
+    }
+
+    // Gráfico de Faixa Etária
+    let faixaEtaria = resposta.faixaEtaria;
+    let faixaEtariaGrafico = {
+        labels: labelFaixaEtaria,
+        datasets: [{
+            label: 'Faixa Etária',
+            data: [],
+            backgroundColor: cores.faixaEtaria,
+        }]
+    };
+    let totalFaixaEtaria = 0;
+    for (let i = 0; i < faixaEtaria.length; i++) {
+        var faixa = faixaEtaria[i];
+        labelFaixaEtaria.push(faixa.FaixaEtaria || faixa.faixaEtaria);
+        faixaEtariaGrafico.datasets[0].data.push(faixa.total);
+        totalFaixaEtaria += faixa.total;
+    }
+
+    // Gráfico de tipos de Jogo
+    let tiposJogo = resposta.tiposJogo || [];
+    let tiposJogoGrafico = {
+        labels: labeltipos,
+        datasets: [{
+            label: 'tipos de Jogo',
+            data: [],
+            backgroundColor: ['#e67e22', '#2980b9', '#27ae60'],
+        }]
+    };
+    let totaltipos = 0;
+    for (let i = 0; i < tiposJogo.length; i++) {
+        var tipo = tiposJogo[i];
+        labeltipos.push(tipo.TipoJogo || tipo.tipoJogo);
+        tiposJogoGrafico.datasets[0].data.push(tipo.total);
+        totaltipos += tipo.total;
+    }
+
+    const configRegiao = {
+        type: 'pie',
+        data: regiaoGrafico,
+        options: {
+            plugins: {
+                legend: {
+                    display: true,
+                    position: 'left',
+                    labels: {
+                        color: '#fff'
+                    }
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            let label = context.label || '';
+                            let index = context.dataIndex;
+                            let valorAbsoluto = regiao[index].total;
+                            let value = context.parsed;
+                            let porcentagem = ((valorAbsoluto / totalRegiao) * 100).toFixed(2);
+                            return `${label}: ${valorAbsoluto} (${porcentagem}%)`;
+                        }
+                    }
+                }
+            },
+            // Adiciona cor de fundo do gráfico
+            backgroundColor: '#222', // cor escura para fundo do gráfico
+        }
+    };
+
+    const configNivel = {
+        type: 'bar',
+        data: nivelGrafico,
+        options: {
+            plugins: {
+                legend: {
+                    display: false
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            let label = context.label || '';
+                            let index = context.dataIndex;
+                            let valorAbsoluto = niveis[index].total;
+                            let value = context.raw;
+                            let porcentagem = ((valorAbsoluto / totalNivel) * 100).toFixed(2);
+                            return `${label}: ${valorAbsoluto} (${porcentagem}%)`;
+                        }
+                    },
+                    bodyColor: '#fff'
+                }
+            },
+            scales: {
+            x: {
+                ticks: {
+                    color: '#fff'
+                },
+                grid: {
+                    color: '#444' // cor das linhas de grade verticais
+                }
+            },
+            y: {
+                ticks: {
+                    color: '#fff'
+                },
+                grid: {
+                    color: '#444' // cor das linhas de grade horizontais
+                }
+            }
+            },
+            backgroundColor: '#222', // cor de fundo do gráfico
+        }
+    };
+
+    const configFaixaEtaria = {
+        type: 'bar',
+        data: faixaEtariaGrafico,
+        options: {
+            plugins: {
+                legend: {
+                    display: false
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            let label = context.label || '';
+                            let index = context.dataIndex;
+                            let valorAbsoluto = faixaEtaria[index].total;
+                            let value = context.raw;
+                            let porcentagem = ((valorAbsoluto / totalFaixaEtaria) * 100).toFixed(2);
+                            return `${label}: ${valorAbsoluto} (${porcentagem}%)`;
+                        }
+                    },
+                    bodyColor: '#fff'
+                }
+            },
+            scales: {
+            x: {
+                ticks: {
+                    color: '#fff'
+                },
+                grid: {
+                    color: '#444' // cor das linhas de grade verticais
+                }
+            },
+            y: {
+                ticks: {
+                    color: '#fff'
+                },
+                grid: {
+                    color: '#444' // cor das linhas de grade horizontais
+                }
+            }
+            },
+            backgroundColor: '#222', // cor de fundo do gráfico
+        }
+    };
+
+    const configTiposJogo = {
+        type: 'bar',
+        data: tiposJogoGrafico,
+        options: {
+            plugins: {
+                legend: { display: false },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            let label = context.label || '';
+                            let index = context.dataIndex;
+                            let valorAbsoluto = tiposJogo[index].total;
+                            let porcentagem = ((valorAbsoluto / totaltipos) * 100).toFixed(2);
+                            return `${label}: ${valorAbsoluto} (${porcentagem}%)`;
+                        }
+                    },
+                    bodyColor: '#fff'
+                }
+            },
+            scales: {
+                x: { ticks: { color: '#fff' }, grid: { color: '#444' } },
+                y: { ticks: { color: '#fff' }, grid: { color: '#444' } }
+            },
+            backgroundColor: '#222',
+        }
+    };
+
+    new Chart(document.getElementById('regiaoGrafico'), configRegiao);
+    new Chart(document.getElementById('nivelGrafico'), configNivel);
+    new Chart(document.getElementById('faixaEtariaGrafico'), configFaixaEtaria);
+    new Chart(document.getElementById('tiposJogoGrafico'), configTiposJogo);
+}
+
+</script>
+</html>
