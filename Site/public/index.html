@@ -84,8 +84,8 @@
           <div class="item">
             <img src="../public/assets/imgs/cooper.jpeg">
             <div class="text">
-            
-            <a href="1960.html">Cooper T51/T53</a>
+            <!-- Aqui eu coloquei o javascript:void-->
+            <a onclick="validarAcesso('Carros/1960.html')">Cooper T51/T53</a>
             <h4>60's</h4>
             </div>
             <p>O Cooper T51/T53 foi um dos carros mais revolucionários da Fórmula 1 no final dos anos 1950 e início dos anos 1960. Ele ficou marcado por popularizar o uso do motor traseiro, uma inovação que mudou completamente o design dos carros da categoria e se tornou padrão nas décadas seguintes.</p>
@@ -95,7 +95,7 @@
           <div class="item reverse">
             <img src="../public/assets/imgs/lotus.webp">
             <div class="text">
-            <a href="1970.html" class="nav a">Lotus 72</a>
+            <a onclick="validarAcesso('Carros/190.html')" class="nav a">Lotus 72</a>
             <h4>70's</h4>
               </div>
             <p>O Lotus 72 foi um dos carros mais inovadores e bem-sucedidos da Fórmula 1 nos anos 1970. Projetado por Colin Chapman, destacou-se pelo design aerodinâmico avançado, com radiadores laterais e formato em cunha, além de introduzir soluções que influenciaram gerações futuras. Com ele, a Lotus conquistou títulos importantes e marcou uma nova era na engenharia da F1.</p>
@@ -105,7 +105,7 @@
             <img src="../public/assets/imgs/Williams.jpeg">
             <div class="text">
             
-            <a href="1980.html">Williams FW07B</a>
+            <a onclick="validarAcesso('Carros/1980.html')">Williams FW07B</a>
             <h4>80's</h4>
           </div>
           <p>O Williams FW07B foi um dos carros mais dominantes do início dos anos 1980. Conhecido pelo uso eficiente do efeito solo (ground effect), oferecia grande estabilidade e velocidade em curvas. Com ele, a Williams consolidou sua força na Fórmula 1, garantindo vitórias importantes e ajudando a equipe a se firmar entre as principais da categoria.</p>
@@ -116,7 +116,7 @@
             <img src="../public/assets/imgs/Mclaren_mp4_5.jpg">
              <div class="text">
             
-            <a href="1990.html">McLaren MP4/5B</a>
+            <a onclick="validarAcesso('Carros/1990.html')">McLaren MP4/5B</a>
             <h4>90's</h4>
             </div>
             <p>O McLaren MP4/5B foi um dos carros mais icônicos da Fórmula 1 no início dos anos 1990. Equipado com o poderoso motor Honda V10, destacou-se pelo equilíbrio entre desempenho e confiabilidade. Pilotado por Ayrton Senna, o carro foi fundamental na conquista do título mundial de 1990, marcando uma era de grande domínio da McLaren na categoria.</p>
@@ -126,7 +126,7 @@
             <img src="../public/assets/imgs/ferrari 2000's.jpeg">
              <div class="text">
             
-            <a href="2000.html">Ferrari F2000</a>
+            <a onclick="validarAcesso('Carros/2000.html')">Ferrari F2000</a>
             <h4>2000's</h4>
             </div>
             <p>A Ferrari F2000 marcou o início de uma era dominante da Ferrari na Fórmula 1. Pilotada por Michael Schumacher na temporada de 2000, o carro combinava potência, confiabilidade e excelente desempenho aerodinâmico, sendo fundamental para encerrar um jejum de 21 anos sem títulos de pilotos da equipe.</p>
@@ -137,7 +137,7 @@
             <img src="../public/assets/imgs/rb6.jpeg">
              <div class="text">
             
-            <a href="2000.html">Red Bull RB6</a>
+            <a onclick="validarAcesso('Carros/2010.html')">Red Bull RB6</a>
             <h4>2010's</h4>
             </div>
             <p>O Red Bull RB6 foi um dos carros mais dominantes da temporada de 2010. Projetado por Adrian Newey, destacou-se pela aerodinâmica extremamente eficiente e alto nível de downforce, garantindo excelente desempenho em curvas. Com ele, Sebastian Vettel conquistou seu primeiro título mundial, marcando o início da era vitoriosa da Red Bull na Fórmula 1.</p>
@@ -147,7 +147,7 @@
             <img src="../public/assets/imgs/W11.jpeg">
              <div class="text">
             
-            <a href="2020.html">AMG F1 W11</a>
+            <a onclick="validarAcesso('Carros/2020.html')">AMG F1 W11</a>
             <h4>2020's</h4>
             </div>
             <p>O AMG F1 W11, da Mercedes, foi um dos carros mais dominantes da história da Fórmula 1. Utilizado na temporada de 2020, destacou-se pelo inovador sistema DAS (Dual Axis Steering) e por sua incrível eficiência aerodinâmica, garantindo múltiplas vitórias e consolidando mais um título para a equipe.</p>
@@ -169,6 +169,7 @@
         </div>
     </div>
   </body>
+  <script src="./js/ValidarLogin.js"></script>
 <script>
   window.onload = function() {
     const nome = sessionStorage.NOME_USUARIO;
@@ -179,6 +180,7 @@
         document.getElementById("menuCadastro").style.display = "none";
     }
 };
+
 </script>
 </html>
 

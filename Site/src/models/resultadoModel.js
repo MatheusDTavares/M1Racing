@@ -1,5 +1,5 @@
 var database = require("../database/config")
-
+// fazendo um select da tabela pesquisa do banco de dados para pegar os resultados e alimentar a Dash
 function buscarResultadosGerais(resposta,apelido) {
     var instrucaoSql = `
     SELECT ${resposta} as ${apelido}, count(*) as total
