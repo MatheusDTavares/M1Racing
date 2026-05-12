@@ -266,3 +266,10 @@ body {
   width: 80%;
   margin: auto;
 }
+
+.outros{
+    /* display: none; */
+    width: 340px;
+    height: 70px;
+    border-radius: 20px;
+}

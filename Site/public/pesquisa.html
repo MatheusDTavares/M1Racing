@@ -86,7 +86,7 @@
                             Apenas o Treino
                         </label>
                         <label>
-                            <input type="radio" name="interesse" value="Qualificação">
+                            <input type="radio" name="interesse" value="Qualificacao">
                             Apenas o Qualify
                         </label>
                         <label>
@@ -100,50 +100,21 @@
                     </div>
                     <div class="pergunta-pesquisa">
                         <p>4. Qual é a sua equipe do coração?</p>
-                        <label>
-                            <input type="radio" name="equipe" value="Mercedes">
-                            Mercedes
-                        </label>
-                        <label>
-                            <input type="radio" name="equipe" value="McLaren">
-                            McLaren
-                        </label>
-                        <label>
-                            <input type="radio" name="equipe" value="Audi">
-                            Audi
-                        </label>
-                        <label>
-                            <input type="radio" name="equipe" value="Red Bull">
-                            Red Bull Racing
-                        </label>
-                        <label>
-                            <input type="radio" name="equipe" value="Ferrari">
-                            Ferrari
-                        </label>
-                        <label>
-                            <input type="radio" name="equipe" value="Aston Martin">
-                            Aston Martin
-                        </label>
-                        <label>
-                            <input type="radio" name="equipe" value="Alpine">
-                            Alpine
-                        </label>
-                        <label>
-                            <input type="radio" name="equipe" value="Williams">
-                            Williams
-                        </label>
-                        <label>
-                            <input type="radio" name="equipe" value="Haas">
-                            Haas
-                        </label>
-                        <label>
-                            <input type="radio" name="equipe" value="RB">
-                            Racing Bulls
-                        </label>
-                        <label>
-                            <input type="radio" name="equipe" value="Cadillac">
-                            Cadillac
-                        </label>
+                        <select name="equipe" id="ipt_equipe">
+                            <option value="">Selecione sua equipe Favorita</option>
+                            <option value="1"> Mercedes </option>
+                            <option value="2"> Aston Martin </option>
+                            <option value="3"> Cadillac </option>
+                            <option value="4"> Ferrari </option>
+                            <option value="5"> Haas </option>
+                            <option value="6"> Williams </option>
+                            <option value="7"> Audi </option>
+                            <option value="8"> RB Racing </option>
+                            <option value="9"> Red Bull </option>
+                            <option value="10"> Alpine </option>
+                            <option value="11"> McLaren </option>
+                           
+                        </select>
                     </div>
                     <div class="pergunta-pesquisa">
                         <p>5. O que te atraiu para a Fórmula 1?</p>
@@ -160,8 +131,12 @@
                             Pilotos
                         </label>
                         <label>
-                            <input type="radio" name="curiosidade" value="Outros">
+                            <input type="radio" id="outro" name="curiosidade" value="Outros" onclick="Aparecer(true)">
                             Outros
+                        </label>
+                        <label>
+                            <input type="text" id="ipt_extra" name="curiosidade" placeholder="Conte-nos o motivo..." style="display: none;">
+                            
                         </label>
                     </div>
                     <div class="pergunta-pesquisa">
@@ -176,7 +151,7 @@
                         </label>
                         <label>
                             <input type="radio" name="opniao" value="Gostei">
-                            Allround
+                            Gostei Deixa mais dinâmico
                         </label>
                     </div>
                     
@@ -267,8 +242,7 @@
           r4Server: equipe,
           r5Server: curiosidade,
           r6Server: opniao,
-        //   r7Server: frequencia,
-        //   r8Server: conteudo
+        
         }),
       })
         .then(function (resposta) {
@@ -339,5 +313,19 @@
     function fecharPopupErro() {
         document.getElementById('popupErroOverlay').style.display = 'none';
     }
+
+
+    function Aparecer(mostrar) {
+    const OutroTexto = document.getElementById('ipt_extra');
+    if (mostrar) {
+        OutroTexto.style.display = 'block';
+        // Coloca o cursor no campo automaticamente
+        OutroTexto.focus(); 
+    } else {
+        OutroTexto.style.display = 'none';
+        // Limpa o texto se o usuário mudar de ideia
+        OutroTexto.value = ''; 
+    }
+}
 </script>
 </html>
