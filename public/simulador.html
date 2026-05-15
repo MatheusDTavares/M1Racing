@@ -9,11 +9,11 @@
     <title>M1 Racing</title>
 
     <script src="./js/sessao.js"></script>
-    <script src="./js/ValidarLogin.js"></script>
 
     <link rel="stylesheet" href="./css/estilo.css">
     <link rel="icon" href="./assets/icon/m1racing.png">
     <link rel="preconnect" href="https://fonts.gstatic.com">
+    
 </head>
 
 <body>
@@ -23,17 +23,12 @@
         <div class="container">
             <a href="./index.html"><h1 class="titulo"><img src="./assets/icon/m1racing.png" alt=""></h1></a>
             <ul class="navbar">
-                <li>
-                    <a href="">Dashboard</a>
-                </li>
-                <li class="agora">Corrida</li>
+                <li><a href="./dashboard/estatistica.html">Estatísticas</a></li>
+                <li><a href="./pesquisa.html">Pesquisa</a></li>
+                <li>Corrida</li>
                 <li>|</li>
-                <li>
-                    <a href="./login.html">Login</a>
-                </li>
-                <li>
-                    <a href="./login.html">Cadastro</a>
-                </li>
+                <li id="menuLogin"><button class="botao1"><a href="login.html"><strong>Login</strong></a></button></li>
+                <li id="menuCadastro"><button class="botao2"><a href="cadastro.html"><strong>Cadastro</strong></a></button></li>
             </ul>
         </div>
     </div>
@@ -96,6 +91,19 @@
 </body>
 <script src="./js/Simulador.js"></script>
 <script>
+
+     function Aparecer(mostrar) {
+    const OutroTexto = document.getElementById('ipt_extra');
+    if (mostrar) {
+        OutroTexto.style.display = 'block';
+        // Coloca o cursor no campo automaticamente
+        OutroTexto.focus(); 
+    } else {
+        OutroTexto.style.display = 'none';
+        // Limpa o texto se o usuário mudar de ideia
+        OutroTexto.value = ''; 
+    }
+}
     window.onload = function() {
     const nome = sessionStorage.NOME_USUARIO;
 
