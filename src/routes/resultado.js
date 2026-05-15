@@ -32,4 +32,4 @@ router.get("/curiosidade", function(req,res){
 router.get("/opniao", function(req,res){
     dadosController.buscarResultadosGerais(req,res)});
 
-module.exports
+module.exports = router;

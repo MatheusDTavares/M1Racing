@@ -195,9 +195,9 @@
         
     
 </body>
+
 <script>
-   validarSessao();
-    validarSessaoPesquisa();
+
 
     function getCheckedValue(name) {
         const elemento = document.querySelector(`input[name="${name}"]:checked`);
@@ -327,5 +327,9 @@
         OutroTexto.value = ''; 
     }
 }
+
+window.onload = function() {
+        atualizarMenuProtegido();
+    }
 </script>
 </html>

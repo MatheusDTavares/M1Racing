@@ -9,6 +9,7 @@
     <title>M1 Racing</title>
 
     <script src="./js/sessao.js"></script>
+    <script src="./js/ValidarLogin.js"></script>
 
     <link rel="stylesheet" href="./css/estilo.css">
     <link rel="icon" href="./assets/icon/m1racing.png">
@@ -94,4 +95,15 @@
 
 </body>
 <script src="./js/Simulador.js"></script>
+<script>
+    window.onload = function() {
+    const nome = sessionStorage.NOME_USUARIO;
+
+    if (nome) {
+        // Usuário logado → troca os botões por "Perfil"
+        document.getElementById("menuLogin").innerHTML = `<a href="./perfil.html">${nome}</a>`;
+        document.getElementById("menuCadastro").style.display = "none";
+    }
+};
+</script>
 </html>

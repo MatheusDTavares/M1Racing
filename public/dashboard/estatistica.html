@@ -1,522 +1,308 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Entre no M1Racing</title>
+    <title>M1 Racing | Estatísticas</title>
+
     <link rel="stylesheet" href="../css/estilo.css">
+    <link rel="icon" href="../assets/icon/m1racing.png">
     <link rel="stylesheet" href="../css/estatisticas.css">
-    <link rel="shortcut icon" type="imagex/png" href="./assets/logo/icone.png">
-    <script src="./script/sessao.js"></script>
+    <script src="../js/sessao.js"></script>
+    
+
+    <!-- biblioteca que desenha os gráficos -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body onload="obterDadosGrafico()">
+<!-- onload chama a função assim que a página terminar de carregar -->
+
     <div class="header">
-      <div class="container">
-        <a href="#"><h1 class="titulo"><img src="./assets/icon/m1racing.png" alt=""></h1></a>
-        <ul class="navbar">
-          <li><a href="simulador.html">Corrida</a></li>
-          <li>|</li>
-          <li id="menuLogin"><button class="botao1"><a href="login.html"><strong>Login</strong></a></button></li>
-          <li id="menuCadastro"><button class="botao2"><a href="cadastro.html"><strong>Cadastro</strong></a></button></li>
-        </ul>
-      </div>
+        <div class="container">
+            <a href="../index.html">
+                <h1 class="titulo"><img src="../assets/icon/m1racing.png" alt=""></h1>
+            </a>
+            <ul class="navbar">
+                <li><a href="../simulador.html">Corrida</a></li>
+                <li>|</li>
+                <li><a href="../pesquisa.html">Pesquisa</a></li>
+            </ul>
+        </div>
     </div>
+
     
     <main>
-        <div class="pesquisa-banner">
-            <div class="caixa-pesquisa">
-                <h2>Responda o formulário e ajude o site a melhorar!</h2>
-                <button onclick="location.href='./pesquisa.html';">Iniciar pesquisa</button>
-                <a href="#anchor">Veja a Seguir a Opnião das Pessoas</a>
+        <h1 style="text-align:center; padding: 2rem;">Estatísticas Gerais</h1>
+
+        
+        <div class="info-cards">
+            <h2>Piloto Favorito</h2>
+            <div class="conteudo-info">
+
+                <!-- Lado esquerdo: o gráfico -->
+                <div class="grafico">
+                    <!-- canvas é onde o Chart.js desenha -->
+                    <!-- o id aqui precisa ser o mesmo que você usar no JS -->
+                    <canvas id="pilotoGrafico"></canvas>
+                </div>
+
+                <!-- Lado direito: os KPIs (maior e menor) -->
+                <div class="info-kpi">
+                    <div class="card">
+                        <h3>Mais votado:</h3>
+                        <!-- id que o JS vai preencher com o nome + total -->
+                        <p id="maiorPiloto"></p>
+                    </div>
+                    <div class="card">
+                        <h3>Menos votado:</h3>
+                        <p id="menorPiloto"></p>
+                    </div>
+                </div>
+
             </div>
         </div>
-        <div class="tela-graficos" id="anchor">
-            <h1>Estatísticas Gerais</h1>
-            <div class="info-cards">
-                <h2>Pilotos Favoritos</h2>
-                <div class="conteudo-info">
-                    <div class="grafico">
-                        <canvas id="regiaoGrafico"></canvas>
-                    </div>
-                    <div class="info-kpi">
-                      <div class="card a">
-                        <h3>Equipes favoritas</h3>
-                        <div class="kpi">
-                          <div class="valor" id="valor">
-                            <p id="maiorEstado"></p>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="card">
-                        <h3>Estado com menos jogadores:</h3>
-                        <div class="kpi">
-                          <div class="valor" id="valor">
-                            <p id="menorEstado"></p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+
+        <div class="info-cards">
+            <h2>Equipe Favorita</h2>
+            <div class="conteudo-info">
+                <div class="grafico">
+                    <canvas id="equipeGrafico"></canvas>
                 </div>
-            </div>
-            <div class="info-cards">
-                <h2>Nível dos Jogadores</h2>
-                <div class="conteudo-info">
-                    <div class="grafico">
-                        <canvas id="nivelGrafico"></canvas>
+                <div class="info-kpi">
+                    <div class="card">
+                        <h3>Mais votada:</h3>
+                        <p id="maiorEquipe"></p>
                     </div>
-                    <div class="info-kpi">
-                        <div class="card a">
-                            <h3>Nível com mais jogadores:</h3>
-                            <div class="kpi">
-                                <div class="valor">
-                                    <p id="maiorNivel"></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <h3>Nível com menos jogadores:</h3>
-                            <div class="kpi">
-                                <div class="valor">
-                                    <p id="menorNivel"></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="info-cards">
-                <h2>Faixa etária dos atletas</h2>
-                <div class="conteudo-info">
-                    <div class="grafico">
-                        <canvas id="faixaEtariaGrafico"></canvas>
-                    </div>
-                    <div class="info-kpi">
-                        <div class="card a">
-                            <h3>Faixa com mais atletas:</h3>
-                            <div class="kpi">
-                                <div class="valor" id="valor">
-                                    <p id="maiorFaixa"></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <h3>Faixa com menos atletas:</h3>
-                            <div class="kpi">
-                                <div class="valor" id="valor">
-                                    <p id="menorFaixa"></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="info-cards">
-                <h2>Tipos de Jogo</h2>
-                <div class="conteudo-info">
-                    <div class="grafico">
-                        <canvas id="tiposJogoGrafico"></canvas>
-                    </div>
-                    <div class="info-kpi">
-                        <div class="card a">
-                            <h3>Tipo com mais jogadores:</h3>
-                            <div class="kpi">
-                                <div class="valor">
-                                    <p id="maiorTipo"></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <h3>Tipo com menos jogadores:</h3>
-                            <div class="kpi">
-                                <div class="valor">
-                                    <p id="menorTipo"></p>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="card">
+                        <h3>Menos votada:</h3>
+                        <p id="menorEquipe"></p>
                     </div>
                 </div>
             </div>
         </div>
+
+        <div class="info-cards">
+            <h2>Há quanto tempo acompanha a F1?</h2>
+            <div class="conteudo-info">
+                <div class="grafico">
+                    <canvas id="tempoGrafico"></canvas>
+                </div>
+                <div class="info-kpi">
+                    <div class="card">
+                        <h3>Nível mais comum:</h3>
+                        <p id="maiorTempo"></p>
+                    </div>
+                    <div class="card">
+                        <h3>Nível menos comum:</h3>
+                        <p id="menorTempo"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-cards">
+            <h2>O que assiste?</h2>
+            <div class="conteudo-info">
+                <div class="grafico">
+                    <canvas id="interesseGrafico"></canvas>
+                </div>
+                <div class="info-kpi">
+                    <div class="card">
+                        <h3>Mais comum:</h3>
+                        <p id="maiorInteresse"></p>
+                    </div>
+                    <div class="card">
+                        <h3>Menos comum:</h3>
+                        <p id="menorInteresse"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-cards">
+            <h2>O que atraiu para a F1?</h2>
+            <div class="conteudo-info">
+                <div class="grafico">
+                    <canvas id="curiosidadeGrafico"></canvas>
+                </div>
+                <div class="info-kpi">
+                    <div class="card">
+                        <h3>Mais citado:</h3>
+                        <p id="maiorCuriosidade"></p>
+                    </div>
+                    <div class="card">
+                        <h3>Menos citado:</h3>
+                        <p id="menorCuriosidade"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-cards">
+            <h2>Opinião sobre o formato Sprint</h2>
+            <div class="conteudo-info">
+                <div class="grafico">
+                    <canvas id="opniaoGrafico"></canvas>
+                </div>
+                <div class="info-kpi">
+                    <div class="card">
+                        <h3>Opinião mais comum:</h3>
+                        <p id="maiorOpniao"></p>
+                    </div>
+                    <div class="card">
+                        <h3>Opinião menos comum:</h3>
+                        <p id="menorOpniao"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </main>
 
+   
     <div class="footer">
         <div class="container">
-            <div class="footer-content novo-footer">
-            <div class="footer-logo">
-                <img src="./assets/icon/m1racing.png" style="height:70px;">
-            </div>
-            <h4>Feito por <a href="./sobre mim.html">Matheus.Tavares</a> &hearts; SPTech &copy; 2026</h4>
+            <h4>Feito por Matheus.Tavares &hearts; SPTech &copy; 2026</h4>
             <span class="version">v1.0.0</span>
-           
-            </div>
-        </div>    
+        </div>
     </div>
 </body>
 <script>
-    validarSessao();
-    let dashboard = [];
-    function obterDadosGrafico() {
-    console.log(`Recuperando resultados gerais`);
-    let regiao = null;
-    let niveis = null;
-    let faixaEtaria = null;
-    let tiposJogo = null;
 
-    fetch('/resultados/regioes')
-        .then(function (response) {
-            if (response.ok) {
-                return response.json();
-            } else {
-                console.error('Nenhum dado encontrado ou erro na API (regioes)');
-                return [];
-            }
-        })
-        .then(function (dadosRegiao) {
-            regiao = dadosRegiao[0];
-            if (regiao !== null && niveis !== null && faixaEtaria !== null && tiposJogo !== null) {
-                plotarGrafico({ regiao, niveis, faixaEtaria, tiposJogo });
-            }
-        })
-        .catch(function (error) {
-            console.error(`Erro na obtenção dos dados p/ gráfico (regioes): ${error.message}`);
-        });
+function obterDadosGrafico() {
 
-    fetch('/resultados/niveis')
-        .then(function (response) {
-            if (response.ok) {
-                return response.json();
-            } else {
-                console.error('Nenhum dado encontrado ou erro na API (niveis)');
-                return [];
-            }
-        })
-        .then(function (dadosNiveis) {
-              niveis = dadosNiveis[0];
-                let nivelMax = dadosNiveis[1].Nivel;
-                let valorMax = dadosNiveis[1].total;
-                let nivelMin = dadosNiveis[2].Nivel;
-                let valorMin = dadosNiveis[2].total;
-                maiorNivel.innerHTML = `${nivelMax} (${valorMax})`;
-                menorNivel.innerHTML = `${nivelMin} (${valorMin})`;
-
-            if (regiao !== null && niveis !== null && faixaEtaria !== null && tiposJogo !== null) {
-                plotarGrafico({ regiao, niveis, faixaEtaria, tiposJogo });
-            }
-        })
-        .catch(function (error) {
-            console.error(`Erro na obtenção dos dados p/ gráfico (niveis): ${error.message}`);
-        });
-
-    fetch('/resultados/faixaetaria')
-        .then(function (response) {
-            if (response.ok) {
-                return response.json();
-            } else {
-                console.error('Nenhum dado encontrado ou erro na API (niveis)');
-                return [];
-            }
-        })
-        .then(function (dadosFaixaEtaria) {
-            faixaEtaria = dadosFaixaEtaria[0];
-                let faixaMax = dadosFaixaEtaria[1].faixaEtaria;
-                let valorFaixaMax = dadosFaixaEtaria[1].total;
-                let faixaMin = dadosFaixaEtaria[2].faixaEtaria;
-                let valorFaixaMin = dadosFaixaEtaria[2].total;
-                maiorFaixa.innerHTML = `${faixaMax} (${valorFaixaMax})`;
-                menorFaixa.innerHTML = `${faixaMin} (${valorFaixaMin})`;
-            console.log(`Dados recebidos: ${JSON.stringify({ regiao, niveis, faixaEtaria })}`);
-            if (regiao !== null && niveis !== null && faixaEtaria !== null && tiposJogo !== null) {
-                plotarGrafico({ regiao, niveis, faixaEtaria, tiposJogo });
-            }
-        })
-        .catch(function (error) {
-            console.error(`Erro na obtenção dos dados p/ gráfico (niveis): ${error.message}`);
-        });
-
-        fetch('/resultados/estados')
-    .then(function (response) {
-        if (response.ok) {
-            return response.json()
-            .then(function(estados) {
-                    let estadoMax = estados[1].Estado;
-                    let valorMax = estados[1].total;
-                    let estadoMin = estados[2].Estado;
-                    let valorMin = estados[2].total;
-                    maiorEstado.innerHTML = `${estadoMax} (${valorMax})`;
-                    menorEstado.innerHTML = `${estadoMin} (${valorMin})`;
-            });
-        } else {
-            console.error('Nenhum dado encontrado ou erro na API (maiorEstado)');
-        }
+    // Promise.all espera TODOS os fetches terminarem
+    // antes de continuar para o .then()
+    Promise.all([
+        fetch('/resultado/piloto').then(r => r.json()),
+        fetch('/resultado/equipe').then(r => r.json()),
+        fetch('/resultado/tempo').then(r => r.json()),
+        fetch('/resultado/interesse').then(r => r.json()),
+        fetch('/resultado/curiosidade').then(r => r.json()),
+        fetch('/resultado/opniao').then(r => r.json())
+    ])
+    .then(function([piloto, equipe, tempo, interesse, curiosidade, opniao]) {
+        // Só chega aqui quando todos os 6 fetches terminarem
+        plotarGrafico({ piloto, equipe, tempo, interesse, curiosidade, opniao });
     })
-    .catch(function (error) {
-        console.error('Erro ao buscar maiorEstado:', error);
+    .catch(function(erro) {
+        console.error('Erro ao buscar dados:', erro);
     });
-
-    fetch('/resultados/tiposJogo')
-        .then(function (response) {
-            if (response.ok) {
-                return response.json();
-            } else {
-                console.error('Nenhum dado encontrado ou erro na API (tiposJogo)');
-                return [];
-            }
-        })
-        .then(function (dadosTiposJogo) {
-            tiposJogo = dadosTiposJogo[0];
-                let tipoJogoMax = dadosTiposJogo[1].TipoJogo;
-                let valorMax = dadosTiposJogo[1].total;
-                let tipoJogoMin = dadosTiposJogo[2].TipoJogo;
-                let valorMin = dadosTiposJogo[2].total;
-                maiorTipo.innerHTML = `${tipoJogoMax} (${valorMax})`;
-                menorTipo.innerHTML = `${tipoJogoMin} (${valorMin})`;
-            if (regiao !== null && niveis !== null && faixaEtaria !== null && tiposJogo !== null) {
-                plotarGrafico({ regiao, niveis, faixaEtaria, tiposJogo });
-            }
-        })
-        .catch(function (error) {
-            console.error('Erro na obtenção dos dados p/ gráfico (tiposJogo): ' + error.message);
-        });
-    }
-
-function plotarGrafico(resposta) {
-    let labelRegiao = [];
-    let labelNivel = [];
-    let labelFaixaEtaria = [];
-    let labeltipos = [];
-
-    const cores = {
-        regiao: ['#1abc9c', '#f1c40f', '#e67e22', '#2980b9', '#8e44ad'],
-        nivel: ['#2980b9', '#27ae60', '#e67e22', '#c0392b'],
-        faixaEtaria: ['#8e44ad', '#f1c40f', '#e67e22', '#27ae60'],
-        tipoJogo: ['#e67e22', '#2980b9', '#27ae60']
-    };
-
-    // Gráfico de Regiões
-    let regiao = resposta.regiao;
-    let regiaoGrafico = {
-        labels: labelRegiao,
-        datasets: [{
-            label: 'Regiões',
-            data: [],
-            backgroundColor: cores.regiao,
-            borderColor: '#1d1d1d',
-            borderWidth: 1
-        }]
-    };
-    let totalRegiao = 0;
-    for (let i = 0; i < regiao.length; i++) {
-        var regiaoatual = regiao[i];
-        labelRegiao.push(regiaoatual.Regiao || regiaoatual.regiao);
-        regiaoGrafico.datasets[0].data.push(regiaoatual.total); // valor inteiro
-        totalRegiao += regiaoatual.total;
-    }
-
-    // Gráfico de Níveis
-    let niveis = resposta.niveis;
-    let nivelGrafico = {
-        labels: labelNivel,
-        datasets: [{
-            label: 'Níveis',
-            data: [],
-            backgroundColor: cores.nivel,
-        }]
-    };
-    let totalNivel = 0;
-    for (let i = 0; i < niveis.length; i++) {
-        var nivel = niveis[i];
-        labelNivel.push(nivel.Nivel || nivel.nivel);
-        nivelGrafico.datasets[0].data.push(nivel.total);
-        totalNivel += nivel.total;
-    }
-
-    // Gráfico de Faixa Etária
-    let faixaEtaria = resposta.faixaEtaria;
-    let faixaEtariaGrafico = {
-        labels: labelFaixaEtaria,
-        datasets: [{
-            label: 'Faixa Etária',
-            data: [],
-            backgroundColor: cores.faixaEtaria,
-        }]
-    };
-    let totalFaixaEtaria = 0;
-    for (let i = 0; i < faixaEtaria.length; i++) {
-        var faixa = faixaEtaria[i];
-        labelFaixaEtaria.push(faixa.FaixaEtaria || faixa.faixaEtaria);
-        faixaEtariaGrafico.datasets[0].data.push(faixa.total);
-        totalFaixaEtaria += faixa.total;
-    }
-
-    // Gráfico de tipos de Jogo
-    let tiposJogo = resposta.tiposJogo || [];
-    let tiposJogoGrafico = {
-        labels: labeltipos,
-        datasets: [{
-            label: 'tipos de Jogo',
-            data: [],
-            backgroundColor: ['#e67e22', '#2980b9', '#27ae60'],
-        }]
-    };
-    let totaltipos = 0;
-    for (let i = 0; i < tiposJogo.length; i++) {
-        var tipo = tiposJogo[i];
-        labeltipos.push(tipo.TipoJogo || tipo.tipoJogo);
-        tiposJogoGrafico.datasets[0].data.push(tipo.total);
-        totaltipos += tipo.total;
-    }
-
-    const configRegiao = {
-        type: 'pie',
-        data: regiaoGrafico,
-        options: {
-            plugins: {
-                legend: {
-                    display: true,
-                    position: 'left',
-                    labels: {
-                        color: '#fff'
-                    }
-                },
-                tooltip: {
-                    callbacks: {
-                        label: function(context) {
-                            let label = context.label || '';
-                            let index = context.dataIndex;
-                            let valorAbsoluto = regiao[index].total;
-                            let value = context.parsed;
-                            let porcentagem = ((valorAbsoluto / totalRegiao) * 100).toFixed(2);
-                            return `${label}: ${valorAbsoluto} (${porcentagem}%)`;
-                        }
-                    }
-                }
-            },
-            // Adiciona cor de fundo do gráfico
-            backgroundColor: '#222', // cor escura para fundo do gráfico
-        }
-    };
-
-    const configNivel = {
-        type: 'bar',
-        data: nivelGrafico,
-        options: {
-            plugins: {
-                legend: {
-                    display: false
-                },
-                tooltip: {
-                    callbacks: {
-                        label: function(context) {
-                            let label = context.label || '';
-                            let index = context.dataIndex;
-                            let valorAbsoluto = niveis[index].total;
-                            let value = context.raw;
-                            let porcentagem = ((valorAbsoluto / totalNivel) * 100).toFixed(2);
-                            return `${label}: ${valorAbsoluto} (${porcentagem}%)`;
-                        }
-                    },
-                    bodyColor: '#fff'
-                }
-            },
-            scales: {
-            x: {
-                ticks: {
-                    color: '#fff'
-                },
-                grid: {
-                    color: '#444' // cor das linhas de grade verticais
-                }
-            },
-            y: {
-                ticks: {
-                    color: '#fff'
-                },
-                grid: {
-                    color: '#444' // cor das linhas de grade horizontais
-                }
-            }
-            },
-            backgroundColor: '#222', // cor de fundo do gráfico
-        }
-    };
-
-    const configFaixaEtaria = {
-        type: 'bar',
-        data: faixaEtariaGrafico,
-        options: {
-            plugins: {
-                legend: {
-                    display: false
-                },
-                tooltip: {
-                    callbacks: {
-                        label: function(context) {
-                            let label = context.label || '';
-                            let index = context.dataIndex;
-                            let valorAbsoluto = faixaEtaria[index].total;
-                            let value = context.raw;
-                            let porcentagem = ((valorAbsoluto / totalFaixaEtaria) * 100).toFixed(2);
-                            return `${label}: ${valorAbsoluto} (${porcentagem}%)`;
-                        }
-                    },
-                    bodyColor: '#fff'
-                }
-            },
-            scales: {
-            x: {
-                ticks: {
-                    color: '#fff'
-                },
-                grid: {
-                    color: '#444' // cor das linhas de grade verticais
-                }
-            },
-            y: {
-                ticks: {
-                    color: '#fff'
-                },
-                grid: {
-                    color: '#444' // cor das linhas de grade horizontais
-                }
-            }
-            },
-            backgroundColor: '#222', // cor de fundo do gráfico
-        }
-    };
-
-    const configTiposJogo = {
-        type: 'bar',
-        data: tiposJogoGrafico,
-        options: {
-            plugins: {
-                legend: { display: false },
-                tooltip: {
-                    callbacks: {
-                        label: function(context) {
-                            let label = context.label || '';
-                            let index = context.dataIndex;
-                            let valorAbsoluto = tiposJogo[index].total;
-                            let porcentagem = ((valorAbsoluto / totaltipos) * 100).toFixed(2);
-                            return `${label}: ${valorAbsoluto} (${porcentagem}%)`;
-                        }
-                    },
-                    bodyColor: '#fff'
-                }
-            },
-            scales: {
-                x: { ticks: { color: '#fff' }, grid: { color: '#444' } },
-                y: { ticks: { color: '#fff' }, grid: { color: '#444' } }
-            },
-            backgroundColor: '#222',
-        }
-    };
-
-    new Chart(document.getElementById('regiaoGrafico'), configRegiao);
-    new Chart(document.getElementById('nivelGrafico'), configNivel);
-    new Chart(document.getElementById('faixaEtariaGrafico'), configFaixaEtaria);
-    new Chart(document.getElementById('tiposJogoGrafico'), configTiposJogo);
 }
 
+function criarGrafico(idCanvas, labels, valores, tipo, cor) {
+    new Chart(document.getElementById(idCanvas), {
+        type: tipo,
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Total',
+                data: valores,
+                backgroundColor: cor
+            }]
+        },
+        options: {
+            plugins: {
+                legend: { 
+                    display: tipo === 'pie', // legenda só no gráfico de pizza
+                    labels: { color: '#fff' }
+                }
+            },
+            scales: tipo === 'bar' ? {
+                // escalas só existem no gráfico de barra
+                x: { ticks: { color: '#fff' }, grid: { color: '#444' } },
+                y: { ticks: { color: '#fff' }, grid: { color: '#444' } }
+            } : {}
+        }
+    });
+}
+
+// ─────────────────────────────────────────────
+// PASSO 3: função auxiliar que preenche os KPIs
+// recebe os ids dos elementos e os dados [1] e [2]
+// ─────────────────────────────────────────────
+function preencherKPI(idMaior, idMenor, dadoMaior, dadoMenor, campo) {
+    document.getElementById(idMaior).innerHTML =
+        dadoMaior[campo] + " (" + dadoMaior.total + " votos)";
+    document.getElementById(idMenor).innerHTML =
+        dadoMenor[campo] + " (" + dadoMenor.total + " votos)";
+}
+
+// ─────────────────────────────────────────────
+// PASSO 4: plotar todos os gráficos
+// ─────────────────────────────────────────────
+function plotarGrafico({ piloto, equipe, tempo, interesse, curiosidade, opniao }) {
+
+    // Cada bloco segue a mesma lógica:
+    // 1. dados[0] → array completo → extrai labels e valores → cria gráfico
+    // 2. dados[1] → maior → preenche KPI
+    // 3. dados[2] → menor → preenche KPI
+
+    // PILOTOS
+    criarGrafico(
+        'pilotoGrafico',
+        piloto[0].map(i => i.Piloto),   // nomes
+        piloto[0].map(i => i.total),    // contagens
+        'bar',
+        '#e10600'
+    );
+    preencherKPI('maiorPiloto', 'menorPiloto', piloto[1], piloto[2], 'Piloto');
+
+    // EQUIPES
+    criarGrafico(
+        'equipeGrafico',
+        equipe[0].map(i => i.Equipe),
+        equipe[0].map(i => i.total),
+        'pie',  // pizza fica mais bonito para equipes
+        ['#e10600','#00d2be','#ff8700','#dc0000','#ffffff',
+         '#0090ff','#006f62','#2b4562','#900000','#ff87bc','#52e252']
+    );
+    preencherKPI('maiorEquipe', 'menorEquipe', equipe[1], equipe[2], 'Equipe');
+
+    // TEMPO DE FÃ
+    criarGrafico(
+        'tempoGrafico',
+        tempo[0].map(i => i.Tempo),
+        tempo[0].map(i => i.total),
+        'bar',
+        '#ff8700'
+    );
+    preencherKPI('maiorTempo', 'menorTempo', tempo[1], tempo[2], 'Tempo');
+
+    // INTERESSE
+    criarGrafico(
+        'interesseGrafico',
+        interesse[0].map(i => i.Interesse),
+        interesse[0].map(i => i.total),
+        'bar',
+        '#00d2be'
+    );
+    preencherKPI('maiorInteresse', 'menorInteresse', interesse[1], interesse[2], 'Interesse');
+
+    // CURIOSIDADE
+    criarGrafico(
+        'curiosidadeGrafico',
+        curiosidade[0].map(i => i.Curiosidade),
+        curiosidade[0].map(i => i.total),
+        'pie',
+        ['#e10600','#ff8700','#00d2be','#ffffff']
+    );
+    preencherKPI('maiorCuriosidade', 'menorCuriosidade', curiosidade[1], curiosidade[2], 'Curiosidade');
+
+    // OPINIÃO
+    criarGrafico(
+        'opniaoGrafico',
+        opniao[0].map(i => i.Opniao),
+        opniao[0].map(i => i.total),
+        'bar',
+        ['#e10600','#888888','#00d2be']
+    );
+    preencherKPI('maiorOpniao', 'menorOpniao', opniao[1], opniao[2], 'Opniao');
+}
+
+
+  window.onload = function() {
+        atualizarMenuProtegido();
+    }
 </script>
 </html>
