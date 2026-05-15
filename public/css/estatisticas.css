@@ -8,14 +8,16 @@ body {
     font-family: 'Outfit', sans-serif;
 }
 
+/*  BANNER  */
+
 .pesquisa-banner {
     background:
-    linear-gradient(to right, 
-  rgba(0, 0, 0, 0.5),
-  rgba(0, 0, 0, 0.8),
-  rgba(0, 0, 0, 0.8),
-  rgba(0, 0, 0, 0.5)),
-    url('../assets/fanzhendong.jpg') no-repeat;
+        linear-gradient(to right,
+            rgba(0, 0, 0, 0.5),
+            rgba(0, 0, 0, 0.8),
+            rgba(0, 0, 0, 0.8),
+            rgba(0, 0, 0, 0.5)),
+        url('../assets/fanzhendong.jpg') no-repeat center center;
     background-size: cover;
     height: 92vh;
     display: flex;
@@ -40,118 +42,148 @@ body {
     margin-bottom: 30%;
 }
 
-.caixa-pesquisa p {
-    max-width: 68%;
-    margin-bottom: 20%;
-}
 .caixa-pesquisa button {
     margin-bottom: 13%;
     width: 300px;
     height: 60px;
     font-size: 18px;
-    background-color: #890a0a;
+    background-color: #FF1801; 
     color: #fff;
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    transition: all 0.1s ease;
+    transition: all 0.2s ease;
+    font-weight: 600;
+    letter-spacing: 1px;
 }
+
 .caixa-pesquisa button:hover {
-    background-color: #980b0b;
+    background-color: #cc1400;
+    transform: scale(1.03);
 }
+
 .caixa-pesquisa button:active {
-  transform: scale(0.98);
-  background-color: #8b1010;
-
+    transform: scale(0.98);
+    background-color: #a81000;
 }
-
 
 .caixa-pesquisa a {
     text-decoration: none;
-    color: #538996;
+    color: #FF1801;
     transition: 0.3s ease;
 }
 
 .caixa-pesquisa a:hover {
-    color: #9da1a2;
+    color: #ff5e4d;
 }
+
+/*  ÁREA DOS GRÁFICOS  */
+
 .tela-graficos {
     min-height: 100vh;
-    padding: 40px 0;
-    background-color: #2c2c2c;
+    padding: 40px 0 80px;
+    background-color: #15151e; 
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    border-top: solid 6px #1d1d1d;
+    border-top: solid 6px #FF1801; 
 }
 
 .tela-graficos h1 {
-    width: 100%;
+    width: 80%;
     color: #ffffff;
     font-family: 'Outfit', sans-serif;
     text-align: center;
     font-size: 40px;
     margin-bottom: 20px;
     padding-bottom: 20px;
-    border-bottom: solid 2px #538996;   
+    border-bottom: solid 3px #FF1801; 
+    text-transform: uppercase;
+    letter-spacing: 2px;
 }
 
-.tela-graficos h2 {
-    width: 100%;
-    color: #ffffff;
-    font-family: 'Outfit', sans-serif;
-    text-align: center;
-    font-size: 30px;
-    margin-top: 10px;
-}
+/* CARD DE CADA PERGUNTA */
 
 .info-cards {
-    width: 90%;
+    width: 85%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 20px 0;
+    padding: 0 0 30px 0; 
     background-color: #1d1d1d;
     margin-top: 50px;
     border-radius: 10px;
+    /* garante que a faixa respeite o border-radius */
+    overflow: hidden; 
+    border: 1px solid #2e2e2e;
+    transition: border 0.3s ease;
 }
+
+/* faixa vermelha no topo de cada card */
+.info-cards::before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 5px;
+    background-color: #FF1801;
+    margin-bottom: 20px;
+}
+
+.info-cards:hover {
+    /* borda vermelha ao passar o mouse */
+    border-color: #FF1801; 
+}
+
+.info-cards h2 {
+    width: 100%;
+    color: #ffffff;
+    font-family: 'Outfit', sans-serif;
+    text-align: center;
+    font-size: 26px;
+    margin: 0 0 10px 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/*  GRÁFICO  */
 
 .conteudo-info {
     width: 90%;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: flex-start;
-    margin: 0 50px;
+    justify-content: space-between;
     min-height: 45vh;
+    gap: 30px;
+}
 
-}
-canvas {
-    width: 500px;
-    height: 500px;
-}
 .grafico {
-    width: 50%;
+    width: 55%;
     height: 100%;
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
 }
+
 .grafico canvas {
-    width: 100%;
-    height: 100%;
+    width: 100% !important;
+    height: 100% !important;
     max-width: 600px;
     max-height: 350px;
 }
+
+/* KPIs */
 
 .info-kpi {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 50%;
+    width: 40%;
+    /* espaço entre os dois cards KPI */
+    gap: 20px; 
     font-size: 19px;
     color: #ffffff;
 }
@@ -160,28 +192,41 @@ canvas {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
+    width: 100%;
 }
+
+/* remove a classe .a com margin manual, usa gap no pai */
 .a {
-    margin-bottom: 50px;
+    margin-bottom: 0;
 }
+
 .card h3 {
-    font-size: 24px;
+    font-size: 18px;
     margin-bottom: 10px;
+    color: #aaaaaa;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
+
 .kpi {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     color: #ffffff;
-    background-color: #2c2c2c;
+    background-color: #15151e;
     width: 100%;
-    padding: 25px 0;
-    border: solid 2px #538996;
+    padding: 20px;
+    border: 2px solid #FF1801; 
     border-radius: 10px;
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+    box-sizing: border-box;
+    transition: background-color 0.2s ease;
 }
 
-
-
-
+.kpi:hover {
+    background-color: #1f1f2e;
+}
