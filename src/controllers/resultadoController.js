@@ -18,19 +18,19 @@ function buscarResultadosIndividuais(req,res) {
     });
 }
 
-function buscarPilotos(req,res) {
-    resultadoModel.buscarResultadosGerais('p.r1', 'Piloto')
-    .then(function(piloto)  {
+function buscarPilotos(req, res) {
+    resultadoModel.buscarPilotos()
+    .then(function(piloto) {
         res.status(200).json(piloto);
     })
-    .catch(function(erro)  {
+    .catch(function(erro) {
         console.log(erro);
         res.status(500).json(erro.sqlMessage);
     });
 }
 
 function buscarTempo(req,res) {
-    resultadoModel.buscarResultadosGerais('p.r2', 'Tempo')
+    resultadoModel.buscarResultadosGerais('r2', 'Tempo')
     .then(function(tempo)  {
         res.status(200).json(tempo);
     })
@@ -41,7 +41,7 @@ function buscarTempo(req,res) {
 }
 
 function buscarInteresse(req,res) {
-    resultadoModel.buscarResultadosGerais('p.r3', 'Interesse')
+    resultadoModel.buscarResultadosGerais('r3', 'Interesse')
     .then(function(interesse)  {
         res.status(200).json(interesse);
     })
@@ -51,19 +51,19 @@ function buscarInteresse(req,res) {
     });
 }
 
-function buscarEquipe(req,res) {
-    resultadoModel.buscarResultadosGerais('p.r4', 'Equipe')
-    .then(function(equipe)  {
+function buscarEquipe(req, res) {
+    resultadoModel.buscarEquipes()
+    .then(function(equipe) {
         res.status(200).json(equipe);
     })
-    .catch(function(erro)  {
+    .catch(function(erro) {
         console.log(erro);
         res.status(500).json(erro.sqlMessage);
     });
 }
 
 function buscarCuriosidade(req,res) {
-    resultadoModel.buscarResultadosGerais('p.r5', 'Curiosidade')
+    resultadoModel.buscarResultadosGerais('r5', 'Curiosidade')
     .then(function(curiosidade)  {
         res.status(200).json(curiosidade);
     })
@@ -74,7 +74,7 @@ function buscarCuriosidade(req,res) {
 }
 
 function buscarOpniao(req,res) {
-    resultadoModel.buscarResultadosGerais('p.r6', 'Opniao')
+    resultadoModel.buscarResultadosGerais('r6', 'Opniao')
     .then(function(opniao)  {
         res.status(200).json(opniao);
     })

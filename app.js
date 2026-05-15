@@ -30,7 +30,7 @@ app.use(cors());
 app.use("/", indexRouter);
 app.use("/usuarios", usuarioRouter);
 app.use("/pesquisa", pesquisaRouter);
-app.use("/resultados", resultadoRouter);
+app.use("/resultado", resultadoRouter);
 
 
 app.listen(PORTA_APP, function () {
