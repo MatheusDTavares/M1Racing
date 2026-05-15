@@ -1,39 +1,39 @@
 var database = require("../database/config")
-// fazendo um select da tabela pesquisa do banco de dados para pegar os resultados e alimentar a Dash
-function buscarResultadosGerais(resposta,apelido) {
-    var instrucaoSql = `
-    SELECT ${resposta} as ${apelido}, count(*) as total
-    FROM pesquisa
-    GROUP BY ${resposta}
-    ORDER BY ${resposta} ASC`;
 
+function buscarResultadosGerais(resposta, apelido) {
+    var instrucaoSql = `
+        SELECT ${resposta} as ${apelido}, count(*) as total
+        FROM pesquisa
+        GROUP BY ${resposta}
+        ORDER BY total DESC`;
+
+    
     var instrucaoSqlMaior = `
-    SELECT ${resposta} as ${apelido}, count(*) as total
-    FROM pesquisa
-    GROUP BY ${resposta}
-    ORDER BY ${resposta} ASC
-    LIMIT 1`;
+        SELECT ${resposta} as ${apelido}, count(*) as total
+        FROM pesquisa
+        GROUP BY ${resposta}
+        ORDER BY total DESC
+        LIMIT 1`;
 
     var instrucaoSqlMenor = `
-    SELECT ${resposta} as ${apelido}, count(*) as total
-    FROM pesquisa
-    GROUP BY ${resposta}
-    ORDER BY ${resposta} ASC
-    LIMIT 1`;
-
+        SELECT ${resposta} as ${apelido}, count(*) as total
+        FROM pesquisa
+        GROUP BY ${resposta}
+        ORDER BY total ASC
+        LIMIT 1`;
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql)
-    .then(function(respostas)   {
-        return database.executar(instrucaoSqlMaior)
-        .then(function(maior) {
-            return database.executar(instrucaoSqlMenor)
-            .then(function(menor)   {
-                return [respostas, maior[0], menor[0]];
-            })
-        })
-    })
-    
+        .then(function (respostas) {
+            return database.executar(instrucaoSqlMaior)
+                .then(function (maior) {
+                    return database.executar(instrucaoSqlMenor)
+                        .then(function (menor) {
+                            // CORREÇÃO: maior[0] e menor[0] para pegar o objeto, não o array
+                            return [respostas, maior[0], menor[0]];
+                        });
+                });
+        });
 }
 
 function buscarEquipes() {
@@ -61,11 +61,11 @@ function buscarEquipes() {
         LIMIT 1`;
 
     return database.executar(instrucaoSql)
-        .then(function(respostas) {
+        .then(function (respostas) {
             return database.executar(instrucaoSqlMaior)
-                .then(function(maior) {
+                .then(function (maior) {
                     return database.executar(instrucaoSqlMenor)
-                        .then(function(menor) {
+                        .then(function (menor) {
                             return [respostas, maior[0], menor[0]];
                         });
                 });
@@ -97,20 +97,19 @@ function buscarPilotos() {
         LIMIT 1`;
 
     return database.executar(instrucaoSql)
-        .then(function(respostas) {
+        .then(function (respostas) {
             return database.executar(instrucaoSqlMaior)
-                .then(function(maior) {
+                .then(function (maior) {
                     return database.executar(instrucaoSqlMenor)
-                        .then(function(menor) {
+                        .then(function (menor) {
                             return [respostas, maior[0], menor[0]];
                         });
                 });
         });
 }
 
-
 module.exports = {
     buscarResultadosGerais,
     buscarPilotos,
     buscarEquipes
-}
+};

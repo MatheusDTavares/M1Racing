@@ -9,13 +9,10 @@
     <link rel="icon" href="../assets/icon/m1racing.png">
     <link rel="stylesheet" href="../css/estatisticas.css">
     <script src="../js/sessao.js"></script>
-    
 
-    <!-- biblioteca que desenha os gráficos -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-<body onload="obterDadosGrafico()">
-<!-- onload chama a função assim que a página terminar de carregar -->
+<body>
 
     <div class="header">
         <div class="container">
@@ -23,45 +20,35 @@
                 <h1 class="titulo"><img src="../assets/icon/m1racing.png" alt=""></h1>
             </a>
             <ul class="navbar">
-                <li class="agora">Estatísticas</a></li>
+                <li class="agora">Estatísticas</li>
                 <li><a href="../pesquisa.html">Pesquisa</a></li>
                 <li><a href="../simulador.html">Corrida</a></li>
                 <li>|</li>
-                <li id="menuLogin"><button class="botao1"><a href="login.html"><strong>Login</strong></a></button></li>
-                <li id="menuCadastro"><button class="botao2"><a href="cadastro.html"><strong>Cadastro</strong></a></button></li>
+                <li id="menuLogin"><button class="botao1"><a href="../login.html"><strong>Login</strong></a></button></li>
+                <li id="menuCadastro"><button class="botao2"><a href="../cadastro.html"><strong>Cadastro</strong></a></button></li>
             </ul>
         </div>
     </div>
 
-    
     <main>
         <h1 style="text-align:center; padding: 2rem;">Estatísticas Gerais</h1>
 
-        
         <div class="info-cards">
             <h2>Piloto Favorito</h2>
             <div class="conteudo-info">
-
-                <!-- Lado esquerdo: o gráfico -->
                 <div class="grafico">
-                    <!-- canvas é onde o Chart.js desenha -->
-                    <!-- o id aqui precisa ser o mesmo que você usar no JS -->
                     <canvas id="pilotoGrafico"></canvas>
                 </div>
-
-                <!-- Lado direito: os KPIs (maior e menor) -->
                 <div class="info-kpi">
                     <div class="card">
                         <h3>Mais votado:</h3>
-                        <!-- id que o JS vai preencher com o nome + total -->
-                        <p id="maiorPiloto"></p>
+                        <div class="kpi"><p id="maiorPiloto"></p></div>
                     </div>
-                    <div class="card">
+                    <div class="card a">
                         <h3>Menos votado:</h3>
-                        <p id="menorPiloto"></p>
+                        <div class="kpi"><p id="menorPiloto"></p></div>
                     </div>
                 </div>
-
             </div>
         </div>
 
@@ -74,11 +61,11 @@
                 <div class="info-kpi">
                     <div class="card">
                         <h3>Mais votada:</h3>
-                        <p id="maiorEquipe"></p>
+                        <div class="kpi"><p id="maiorEquipe"></p></div>
                     </div>
-                    <div class="card">
+                    <div class="card a">
                         <h3>Menos votada:</h3>
-                        <p id="menorEquipe"></p>
+                        <div class="kpi"><p id="menorEquipe"></p></div>
                     </div>
                 </div>
             </div>
@@ -93,11 +80,11 @@
                 <div class="info-kpi">
                     <div class="card">
                         <h3>Nível mais comum:</h3>
-                        <p id="maiorTempo"></p>
+                        <div class="kpi"><p id="maiorTempo"></p></div>
                     </div>
-                    <div class="card">
+                    <div class="card a">
                         <h3>Nível menos comum:</h3>
-                        <p id="menorTempo"></p>
+                        <div class="kpi"><p id="menorTempo"></p></div>
                     </div>
                 </div>
             </div>
@@ -112,11 +99,11 @@
                 <div class="info-kpi">
                     <div class="card">
                         <h3>Mais comum:</h3>
-                        <p id="maiorInteresse"></p>
+                        <div class="kpi"><p id="maiorInteresse"></p></div>
                     </div>
-                    <div class="card">
+                    <div class="card a">
                         <h3>Menos comum:</h3>
-                        <p id="menorInteresse"></p>
+                        <div class="kpi"><p id="menorInteresse"></p></div>
                     </div>
                 </div>
             </div>
@@ -131,11 +118,11 @@
                 <div class="info-kpi">
                     <div class="card">
                         <h3>Mais citado:</h3>
-                        <p id="maiorCuriosidade"></p>
+                        <div class="kpi"><p id="maiorCuriosidade"></p></div>
                     </div>
-                    <div class="card">
+                    <div class="card a">
                         <h3>Menos citado:</h3>
-                        <p id="menorCuriosidade"></p>
+                        <div class="kpi"><p id="menorCuriosidade"></p></div>
                     </div>
                 </div>
             </div>
@@ -150,32 +137,33 @@
                 <div class="info-kpi">
                     <div class="card">
                         <h3>Opinião mais comum:</h3>
-                        <p id="maiorOpniao"></p>
+                        <div class="kpi"><p id="maiorOpniao"></p></div>
                     </div>
-                    <div class="card">
+                    <div class="card a">
                         <h3>Opinião menos comum:</h3>
-                        <p id="menorOpniao"></p>
+                        <div class="kpi"><p id="menorOpniao"></p></div>
                     </div>
                 </div>
             </div>
         </div>
-
     </main>
 
-   
     <div class="footer">
         <div class="container">
             <h4>Feito por Matheus.Tavares &hearts; SPTech &copy; 2026</h4>
             <span class="version">v1.0.0</span>
         </div>
     </div>
-</body>
+
 <script>
 
-function obterDadosGrafico() {
+// CORREÇÃO: window.onload unificado — chama menu E gráficos juntos
+window.onload = function() {
+    atualizarMenuProtegido();
+    obterDadosGrafico();
+};
 
-    // Promise.all espera TODOS os fetches terminarem
-    // antes de continuar para o .then()
+function obterDadosGrafico() {
     Promise.all([
         fetch('/resultado/piloto').then(r => r.json()),
         fetch('/resultado/equipe').then(r => r.json()),
@@ -185,7 +173,6 @@ function obterDadosGrafico() {
         fetch('/resultado/opniao').then(r => r.json())
     ])
     .then(function([piloto, equipe, tempo, interesse, curiosidade, opniao]) {
-        // Só chega aqui quando todos os 6 fetches terminarem
         plotarGrafico({ piloto, equipe, tempo, interesse, curiosidade, opniao });
     })
     .catch(function(erro) {
@@ -206,14 +193,12 @@ function criarGrafico(idCanvas, labels, valores, tipo, cor) {
         },
         options: {
             plugins: {
-                legend: { 
-                    // legenda só no gráfico de pizza
-                    display: tipo === 'pie', 
+                legend: {
+                    display: tipo === 'pie',
                     labels: { color: '#fff' }
                 }
             },
             scales: tipo === 'bar' ? {
-                // escalas só existem no gráfico de barra
                 x: { ticks: { color: '#fff' }, grid: { color: '#444' } },
                 y: { ticks: { color: '#fff' }, grid: { color: '#444' } }
             } : {}
@@ -221,50 +206,44 @@ function criarGrafico(idCanvas, labels, valores, tipo, cor) {
     });
 }
 
-
-
-// recebe os ids dos elementos e os dados [1] e [2]
-
+// CORREÇÃO: verifica se os dados existem antes de preencher os KPIs
 function preencherKPI(idMaior, idMenor, dadoMaior, dadoMenor, campo) {
-    document.getElementById(idMaior).innerHTML =
-        dadoMaior[campo] + " (" + dadoMaior.total + " votos)";
-    document.getElementById(idMenor).innerHTML =
-        dadoMenor[campo] + " (" + dadoMenor.total + " votos)";
-}
+    if (dadoMaior) {
+        document.getElementById(idMaior).innerHTML =
+            dadoMaior[campo] + " (" + dadoMaior.total + " votos)";
+    } else {
+        document.getElementById(idMaior).innerHTML = "Sem dados";
+    }
 
+    if (dadoMenor) {
+        document.getElementById(idMenor).innerHTML =
+            dadoMenor[campo] + " (" + dadoMenor.total + " votos)";
+    } else {
+        document.getElementById(idMenor).innerHTML = "Sem dados";
+    }
+}
 
 function plotarGrafico({ piloto, equipe, tempo, interesse, curiosidade, opniao }) {
 
-    
-    // 1. dados[0] → array completo → extrai labels e valores → cria gráfico
-    // 2. dados[1] → maior → preenche KPI
-    // 3. dados[2] → menor → preenche KPI
-
-    // PILOTOS
     criarGrafico(
         'pilotoGrafico',
-        // nomes
-        piloto[0].map(i => i.Piloto),   
-        // contagens
-        piloto[0].map(i => i.total),    
+        piloto[0].map(i => i.Piloto),
+        piloto[0].map(i => i.total),
         'bar',
         '#e10600'
     );
     preencherKPI('maiorPiloto', 'menorPiloto', piloto[1], piloto[2], 'Piloto');
 
-    
     criarGrafico(
         'equipeGrafico',
         equipe[0].map(i => i.Equipe),
         equipe[0].map(i => i.total),
-        // pizza 
-        'pie',  
+        'pie',
         ['#e10600','#00d2be','#ff8700','#dc0000','#ffffff',
          '#0090ff','#006f62','#2b4562','#900000','#ff87bc','#52e252']
     );
     preencherKPI('maiorEquipe', 'menorEquipe', equipe[1], equipe[2], 'Equipe');
 
-    
     criarGrafico(
         'tempoGrafico',
         tempo[0].map(i => i.Tempo),
@@ -274,7 +253,6 @@ function plotarGrafico({ piloto, equipe, tempo, interesse, curiosidade, opniao }
     );
     preencherKPI('maiorTempo', 'menorTempo', tempo[1], tempo[2], 'Tempo');
 
-    
     criarGrafico(
         'interesseGrafico',
         interesse[0].map(i => i.Interesse),
@@ -284,7 +262,6 @@ function plotarGrafico({ piloto, equipe, tempo, interesse, curiosidade, opniao }
     );
     preencherKPI('maiorInteresse', 'menorInteresse', interesse[1], interesse[2], 'Interesse');
 
-    
     criarGrafico(
         'curiosidadeGrafico',
         curiosidade[0].map(i => i.Curiosidade),
@@ -294,7 +271,6 @@ function plotarGrafico({ piloto, equipe, tempo, interesse, curiosidade, opniao }
     );
     preencherKPI('maiorCuriosidade', 'menorCuriosidade', curiosidade[1], curiosidade[2], 'Curiosidade');
 
-    
     criarGrafico(
         'opniaoGrafico',
         opniao[0].map(i => i.Opniao),
@@ -305,23 +281,6 @@ function plotarGrafico({ piloto, equipe, tempo, interesse, curiosidade, opniao }
     preencherKPI('maiorOpniao', 'menorOpniao', opniao[1], opniao[2], 'Opniao');
 }
 
-
-  window.onload = function() {
-        atualizarMenuProtegido();
-    }
-
-
-     function Aparecer(mostrar) {
-    const OutroTexto = document.getElementById('ipt_extra');
-    if (mostrar) {
-        OutroTexto.style.display = 'block';
-        // Coloca o cursor no campo automaticamente
-        OutroTexto.focus(); 
-    } else {
-        OutroTexto.style.display = 'none';
-        // Limpa o texto se o usuário mudar de ideia
-        OutroTexto.value = ''; 
-    }
-}
 </script>
+</body>
 </html>

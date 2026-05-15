@@ -3,25 +3,24 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>M1 Racing</title>
+    <title>M1 Racing | Simulador</title>
 
     <script src="./js/sessao.js"></script>
 
     <link rel="stylesheet" href="./css/estilo.css">
+    <link rel="stylesheet" href="./css/simulador.css">
     <link rel="icon" href="./assets/icon/m1racing.png">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    
 </head>
 
 <body>
 
-    <!--header inicio-->
+    <!-- Header -->
     <div class="header">
         <div class="container">
-            <a href="./index.html"><h1 class="titulo"><img src="./assets/icon/m1racing.png" alt=""></h1></a>
+            <a href="./index.html">
+                <h1 class="titulo"><img src="./assets/icon/m1racing.png" alt="M1 Racing"></h1>
+            </a>
             <ul class="navbar">
                 <li><a href="./dashboard/estatistica.html">Estatísticas</a></li>
                 <li><a href="./pesquisa.html">Pesquisa</a></li>
@@ -33,85 +32,82 @@
         </div>
     </div>
 
+    <!-- Simulador -->
+    <div class="sim-wrap">
 
-    <!-- simulador inicio -->
-    <div class="simulador">
-        <div class="container">
-            <div class="">
-        <div class="">
-            <h2>Escolha seu corredor favorito</h2>
-            <select name="" id="ipt_aposta">
-              <option value="0"> Alexander Albon </option>
-              <option value="1"> Kimi Antonelli </option>
-              <option value="2"> Carlos Sainz  </option>
-              <option value="3"> Charles Leclerc </option>
-              <option value="4"> Esteban Ocon </option>
-              <option value="5"> Fernando Alonso </option>
-              <option value="6"> Gabriel Bortoleto </option>
-              <option value="7"> George Russell </option>
-              <option value="8"> Isack Hadjar </option>
-              <option value="9"> Kevin Magnussen </option>
-              <option value="10"> Lance Stroll </option>
-              <option value="11"> Lando Norris </option>
-              <option value="12"> Lewis Hamilton </option>
-              <option value="13"> Liam Lawson </option>
-              <option value="14"> Logan Sargeant </option>
-              <option value="15"> Max Verstappen </option>
-              <option value="16"> Nico Hülkenberg </option>
-              <option value="17"> Oscar Piastri  </option>
-              <option value="18"> Pierre Gasly </option>
-              <option value="19"> Sergio Pérez  </option>
-              <option value="20"> Valtteri Bottas </option>
-              <option value="21"> Zhou Guanyu </option>
-            </select>
-            <br><br><br>
+        <div class="sim-header">
+            <span class="flag">🏁</span>
+            <h2>Simulador F1</h2>
+        </div>
 
-            <button onclick="Correr()">Verificar</button><br>
+        <div class="sim-controls">
+            <div>
+                <div class="sim-label">Escolha seu piloto</div>
+                <select class="sim-select" id="ipt_aposta">
+                    <option value="0">Alexander Albon</option>
+                    <option value="1">Kimi Antonelli</option>
+                    <option value="2">Carlos Sainz</option>
+                    <option value="3">Charles Leclerc</option>
+                    <option value="4">Esteban Ocon</option>
+                    <option value="5">Fernando Alonso</option>
+                    <option value="6">Gabriel Bortoleto</option>
+                    <option value="7">George Russell</option>
+                    <option value="8">Isack Hadjar</option>
+                    <option value="9">Kevin Magnussen</option>
+                    <option value="10">Lance Stroll</option>
+                    <option value="11">Lando Norris</option>
+                    <option value="12">Lewis Hamilton</option>
+                    <option value="13">Liam Lawson</option>
+                    <option value="14">Logan Sargeant</option>
+                    <option value="15">Max Verstappen</option>
+                    <option value="16">Nico Hülkenberg</option>
+                    <option value="17">Oscar Piastri</option>
+                    <option value="18">Pierre Gasly</option>
+                    <option value="19">Sergio Pérez</option>
+                    <option value="20">Valtteri Bottas</option>
+                    <option value="21">Zhou Guanyu</option>
+                </select>
+            </div>
+            <button class="btn-race" id="btnCorrer" onclick="iniciarCorrida()">▶ Correr</button>
+        </div>
 
-            <h2>Corrida</h2><br><br>
-            <div id="resultado" class="simulador"></div>
+        <!-- Área que aparece só durante/após a corrida -->
+        <div id="areaVolta" style="display: none;">
+
+            <div class="volta-info">
+                <span class="volta-badge" id="voltaTexto">Volta 0 / 10</span>
+            </div>
+
+            <div class="progresso-bar">
+                <div class="progresso-fill" id="progressoFill"></div>
+            </div>
+
+            <div class="grid-corrida" id="gridCorrida"></div>
+
+            <div class="resultado-final" id="resultadoFinal"></div>
 
         </div>
     </div>
 
-        </div>
-    </div>
-    <!-- simulador fim -->
-
-    <!--footer inicio-->
+    <!-- Footer -->
     <div class="footer">
         <div class="container">
-            <h4>Feito com amor por aluno &hearts; SPTech &copy; 2023</h4>
+            <h4>Feito por Matheus.Tavares &hearts; SPTech &copy; 2026</h4>
             <span class="version">v1.0.0</span>
         </div>
     </div>
-    <!--footer fim-->
-
 
 </body>
+
 <script src="./js/Simulador.js"></script>
 <script>
-
-     function Aparecer(mostrar) {
-    const OutroTexto = document.getElementById('ipt_extra');
-    if (mostrar) {
-        OutroTexto.style.display = 'block';
-        // Coloca o cursor no campo automaticamente
-        OutroTexto.focus(); 
-    } else {
-        OutroTexto.style.display = 'none';
-        // Limpa o texto se o usuário mudar de ideia
-        OutroTexto.value = ''; 
-    }
-}
-    window.onload = function() {
-    const nome = sessionStorage.NOME_USUARIO;
-
-    if (nome) {
-        // Usuário logado → troca os botões por "Perfil"
-        document.getElementById("menuLogin").innerHTML = `<a href="./perfil.html">${nome}</a>`;
-        document.getElementById("menuCadastro").style.display = "none";
-    }
-};
+    window.onload = function () {
+        const nome = sessionStorage.NOME_USUARIO;
+        if (nome) {
+            document.getElementById("menuLogin").innerHTML = `<a href="./perfil.html">${nome}</a>`;
+            document.getElementById("menuCadastro").style.display = "none";
+        }
+    };
 </script>
+
 </html>
