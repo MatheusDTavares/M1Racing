@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="./css/estilo.css">
     <link rel="stylesheet" href="./css/pesquisa.css">
     <link rel="shortcut icon" type="imagex/png" href="./assets/logo/icone.png">
-    <script src="./script/sessao.js"></script>
+    <script src="./js/sessao.js"></script>
 </head>
 <body>
      <div class="header">
@@ -196,7 +196,7 @@
     
 </body>
 <script>
-    validarSessao();
+   validarSessao();
     validarSessaoPesquisa();
 
     function getCheckedValue(name) {
@@ -213,7 +213,7 @@
         var piloto = document.getElementById("ipt_piloto").value;
         var tempo = getCheckedValue("tempo");
         var interesse = getCheckedValue("interesse");
-        var equipe = getCheckedValue("equipe");
+        var equipe = document.getElementById("ipt_equipe").value;
         var curiosidade = getCheckedValue("curiosidade");
         var opniao = getCheckedValue("opniao");
         

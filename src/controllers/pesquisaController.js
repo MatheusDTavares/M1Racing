@@ -54,7 +54,7 @@ function guardar(req,res) {
                     res.status(200).json(resultado);
                 })
             } else {
-                pesquisaModel.guardar(dUsuario, r1, r2, r3, r4, r5, r6)
+                pesquisaModel.guardar(idUsuario, r1, r2, r3, r4, r5, r6)
                 .then(
                     function(resultado) {
                         res.json(resultado);

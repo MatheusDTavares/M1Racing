@@ -10,7 +10,7 @@ function verificar(id) {
 }
 
 function guardar(idUsuario,r1, r2, r3, r4, r5, r6){
-    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function guardar():", idUsuario, r1, r2, r3, r4, r5, r6, r7, r8);
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function guardar():", idUsuario, r1, r2, r3, r4, r5, r6);
     var instrucaoSql = `
         INSERT INTO pesquisa (fkUsuario, r1, r2, r3, r4, r5, r6) VALUES ('${idUsuario}','${r1}', '${r2}', '${r3}', '${r4}', '${r5}', '${r6}');
     `;
@@ -19,7 +19,7 @@ function guardar(idUsuario,r1, r2, r3, r4, r5, r6){
 }
 
 function atualizar(idUsuario, r1, r2, r3, r4, r5, r6) {
-    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function guardar():", idUsuario, r1, r2, r3, r4, r5, r6, r7, r8);
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function guardar():", idUsuario, r1, r2, r3, r4, r5, r6);
     var instrucaoSql = `
         UPDATE pesquisa SET r1 = '${r1}',r2 = '${r2}',r3 = '${r3}',r4 = '${r4}',r5 = '${r5}',r6 = '${r6}' WHERE fkUsuario = ${idUsuario};
     `;
