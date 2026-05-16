@@ -1,0 +1,246 @@
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&family=Share+Tech+Mono&display=swap');
+
+
+/**/
+/* Caixa geral da pagina */
+.sim-wrap {
+    /*trocando a fonte*/
+  font-family: 'Rajdhani', sans-serif;
+  /*2rem = 32px*/
+  padding: 2rem;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* cabeçalho da pagina o SIMULADOR F1*/
+.sim-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  /*Linha vermelha*/
+  border-bottom: 2px solid #e10600;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+}
+/*Texto do cabeçalho*/
+.sim-header h2 {
+  font-size: 26px;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+.sim-header .flag {
+  font-size: 24px;
+}
+
+/* Controles o botão e o select de piloto */
+.sim-controles {
+  display: grid;
+  /*Cria 2 colunas 1 que ocupa todo o espaço aonde fica o select e a 
+  outra o tamanho do botao*/
+  grid-template-columns: 1fr auto;
+  gap: 12px;
+  align-items: end;
+  margin-bottom: 20px;
+}
+
+.sim-label {
+  font-size: 13px;
+  color: #aaaaaa;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.sim-select {
+  width: 100%;
+  padding: 10px 14px;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 6px;
+  border: 1.5px solid #333;
+  background: #1e1e2a;
+  color: #ffffff;
+  cursor: pointer;
+}
+/*pseudo-seletor que aplica um estilo ao clicar*/
+.sim-select:focus {
+  outline: 2px solid #e10600;
+  outline-offset: 2px;
+}
+
+/* BOTÃO CORRER  */
+.btn-race {
+  padding: 10px 24px;
+  background: #e10600;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  white-space: nowrap;
+  /*animações suaves*/
+  transition: background 0.15s, transform 0.1s;
+}
+
+/**/
+.btn-race:hover {
+  background: #b50500;
+}
+
+.btn-race:active {
+  transform: scale(0.97);
+}
+
+.btn-race:disabled {
+  background: #555;
+  cursor: not-allowed;
+}
+
+/* Info Das Voltas  */
+.volta-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.volta-badge {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #aaaaaa;
+}
+
+/* BARRA DE PROGRESSO */
+.progresso-bar {
+  height: 4px;
+  background: #2e2e3a;
+  border-radius: 2px;
+  margin-bottom: 16px;
+  /*esconde tudo que ultrapassar a borda do trilho*/
+  overflow: hidden;
+}
+
+.progresso-fill {
+  height: 100%;
+  background: #e10600;
+  border-radius: 2px;
+  width: 0%;
+  transition: width 0.8s ease;
+}
+
+/* GRID DA CORRIDA */
+.grid-corrida {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.linha-piloto {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #2e2e3a;
+  background: #1e1e2a;
+  transition: all 0.5s ease;
+  font-size: 15px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+/* Linha do piloto que o usuário escolheu */
+.linha-piloto.destaque {
+  border-color: #e10600;
+  background: rgba(225, 6, 0, 0.1);
+}
+
+/* Linha do líder da corrida */
+.linha-piloto.lider {
+  border-color: #FFD700;
+  background: rgba(255, 215, 0, 0.07);
+}
+
+/* Posições */
+.pos-num {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 13px;
+  color: #888888;
+    min-width: 22px;
+  text-align: right;
+}
+
+.pos-num.p1 { color: #FFD700; font-size: 15px; }
+.pos-num.p2 { color: #C0C0C0; }
+.pos-num.p3 { color: #CD7F32; }
+
+/* Nome dos pilotos  */
+.piloto-nome {
+  flex: 1;
+  color: #ffffff;
+}
+
+.piloto-nome.destaque-nome {
+  color: #e10600;
+}
+
+/* tags */
+.tag-voce {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  background: #e10600;
+  color: #ffffff;
+  padding: 2px 7px;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+.tag-lider {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  background: #FFD700;
+  color: #6b5000;
+  padding: 2px 7px;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+/* resultado final */
+.resultado-final {
+  margin-top: 16px;
+  padding: 14px 16px;
+  border-radius: 8px;
+  border: 2px solid #e10600;
+  text-align: center;
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #ffffff;
+  display: none;
+}
+
+.resultado-final.vitoria {
+  border-color: #FFD700;
+  color: #FFD700;
+  background: rgba(255, 215, 0, 0.08);
+}
+
+.resultado-final.derrota {
+  border-color: #e10600;
+  color: #ffffff;
+  background: rgba(225, 6, 0, 0.08);
+}
