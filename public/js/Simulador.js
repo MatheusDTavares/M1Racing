@@ -1,4 +1,4 @@
-// Lista de todos os corredores (na mesma ordem do select no HTML)
+// Lista de todos os corredores
 let corredores = [
     "Alexander Albon", "Kimi Antonelli", "Carlos Sainz", "Charles Leclerc",
     "Esteban Ocon", "Fernando Alonso", "Gabriel Bortoleto", "George Russell",

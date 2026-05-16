@@ -5,9 +5,7 @@
 /* Caixa geral da pagina */
 .sim-wrap {
     /*trocando a fonte*/
-  font-family: 'Rajdhani', sans-serif;
-  /*2rem = 32px*/
-  padding: 2rem;
+  padding: 32px;
   max-width: 700px;
   margin: 0 auto;
 }
@@ -28,7 +26,6 @@
   font-weight: 700;
   margin: 0;
   letter-spacing: 2px;
-  text-transform: uppercase;
   color: #ffffff;
 }
 
@@ -39,9 +36,6 @@
 /* Controles o botão e o select de piloto */
 .sim-controles {
   display: grid;
-  /*Cria 2 colunas 1 que ocupa todo o espaço aonde fica o select e a 
-  outra o tamanho do botao*/
-  grid-template-columns: 1fr auto;
   gap: 12px;
   align-items: end;
   margin-bottom: 20px;
@@ -51,26 +45,18 @@
   font-size: 13px;
   color: #aaaaaa;
   margin-bottom: 6px;
-  text-transform: uppercase;
   letter-spacing: 1px;
 }
 
 .sim-select {
   width: 100%;
   padding: 10px 14px;
-  font-family: 'Rajdhani', sans-serif;
   font-size: 16px;
   font-weight: 600;
   border-radius: 6px;
   border: 1.5px solid #333;
   background: #1e1e2a;
   color: #ffffff;
-  cursor: pointer;
-}
-/*pseudo-seletor que aplica um estilo ao clicar*/
-.sim-select:focus {
-  outline: 2px solid #e10600;
-  outline-offset: 2px;
 }
 
 /* BOTÃO CORRER  */
@@ -80,13 +66,9 @@
   color: #ffffff;
   border: none;
   border-radius: 6px;
-  font-family: 'Rajdhani', sans-serif;
   font-size: 16px;
   font-weight: 700;
   letter-spacing: 1px;
-  text-transform: uppercase;
-  cursor: pointer;
-  white-space: nowrap;
   /*animações suaves*/
   transition: background 0.15s, transform 0.1s;
 }
@@ -96,13 +78,8 @@
   background: #b50500;
 }
 
-.btn-race:active {
-  transform: scale(0.97);
-}
-
 .btn-race:disabled {
   background: #555;
-  cursor: not-allowed;
 }
 
 /* Info Das Voltas  */
@@ -117,7 +94,6 @@
   font-size: 13px;
   font-weight: 600;
   letter-spacing: 1px;
-  text-transform: uppercase;
   color: #aaaaaa;
 }
 
@@ -127,8 +103,6 @@
   background: #2e2e3a;
   border-radius: 2px;
   margin-bottom: 16px;
-  /*esconde tudo que ultrapassar a borda do trilho*/
-  overflow: hidden;
 }
 
 .progresso-fill {
@@ -204,7 +178,6 @@
   color: #ffffff;
   padding: 2px 7px;
   border-radius: 4px;
-  text-transform: uppercase;
 }
 
 .tag-lider {
@@ -215,7 +188,6 @@
   color: #6b5000;
   padding: 2px 7px;
   border-radius: 4px;
-  text-transform: uppercase;
 }
 
 /* resultado final */
@@ -228,7 +200,6 @@
   font-size: 17px;
   font-weight: 700;
   letter-spacing: 1px;
-  text-transform: uppercase;
   color: #ffffff;
   display: none;
 }
