@@ -148,14 +148,13 @@
 
 /* Posições */
 .pos-num {
-  font-family: 'Share Tech Mono', monospace;
   font-size: 13px;
   color: #888888;
     min-width: 22px;
   text-align: right;
 }
 
-.pos-num.p1 { color: #FFD700; font-size: 15px; }
+.pos-num.p1 { color: #FFD700; }
 .pos-num.p2 { color: #C0C0C0; }
 .pos-num.p3 { color: #CD7F32; }
 
