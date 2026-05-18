@@ -23,8 +23,8 @@ router.get("/curiosidade", function(req, res) {
     resultadoController.buscarCuriosidade(req, res);
 });
 
-router.get("/opniao", function(req, res) {
-    resultadoController.buscarOpniao(req, res);
+router.get("/favorito", function(req, res) {
+    resultadoController.buscarfavorito(req, res);
 });
 
 module.exports = router;

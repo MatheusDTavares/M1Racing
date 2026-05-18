@@ -120,40 +120,52 @@
                         </select>
                     </div>
                     <div class="pergunta-pesquisa">
-                        <p>5. O que te atraiu para a Fórmula 1?</p>
+                        <p>5. Qual era da Fórmula 1 você considera mais interessante?</p>
                         <label>
-                            <input type="radio" name="curiosidade" value="Velocidade">
-                            Velocidade
+                            <input type="radio" name="curiosidade" value="Lauda">
+                            Era Lauda/Hunt
                         </label>
                         <label>
-                            <input type="radio" name="curiosidade" value="Tecnologia">
-                            Tecnologia
+                            <input type="radio" name="curiosidade" value="Senna">
+                            Era Senna/Prost
                         </label>
                         <label>
-                            <input type="radio" name="curiosidade" value="Pilotos">
-                            Pilotos
+                            <input type="radio" name="curiosidade" value="Schumacher">
+                            Era Schumacher/Ferrari
                         </label>
                         <label>
-                            <input type="radio" id="outro" name="curiosidade" value="Outros" onclick="Aparecer(true)">
-                            Outros
+                            <input type="radio" name="curiosidade" value="Vettel">
+                            Era Vettel/Red Bull
                         </label>
-        
+                        <label>
+                            <input type="radio" name="curiosidade" value="Hamilton">
+                            Era Hamilton/Mercedes
+                        </label>
+
+                        <label>
+                            <input type="radio" name="curiosidade" value="Verstappen">
+                            Verstappen
+                        </label>
+
                     </div>
                     <div class="pergunta-pesquisa">
-                        <p>6. O que você acha do novo formato de Sprint?</p>
-                        <label>
-                            <input type="radio" name="opniao" value="NaoGostei">
-                            Não Gostei
-                        </label>
-                        <label>
-                            <input type="radio" name="opniao" value="Nada">
-                            Não mudou em Nada
-                        </label>
-                        <label>
-                            <input type="radio" name="opniao" value="Gostei">
-                            Gostei Deixa mais dinâmico
-                        </label>
-                    </div>
+                            <p>5. Se pudesse assistir um GP ao vivo, qual escolheria?</p>
+
+                            <select name="favorito" id="ipt_gpFavorito">
+                                <option value="">Selecione um GP</option>
+
+                                <option value="1">GP de Mônaco</option>
+                                <option value="2">GP de Silverstone</option>
+                                <option value="3">GP de Interlagos</option>
+                                <option value="4">GP de Monza</option>
+                                <option value="5">GP de Suzuka</option>
+                                <option value="6">GP de Spa-Francorchamps</option>
+                                <option value="7">GP de Singapura</option>
+                                <option value="8">GP de Las Vegas</option>
+                                <option value="9">GP de Abu Dhabi</option>
+                                <option value="10">GP do Japão</option>
+                            </select>
+                        </div>
                     
                     
                         <div id="botaodiv">
@@ -215,15 +227,15 @@
         var interesse = getCheckedValue("interesse");
         var equipe = document.getElementById("ipt_equipe").value;
         var curiosidade = getCheckedValue("curiosidade");
-        var opniao = getCheckedValue("opniao");
+        var favorito = document.getElementById("ipt_gpFavorito").value;
         
         
 
         
 
-        console.log(idUsuario, piloto, tempo, interesse, equipe, curiosidade, opniao);
+        console.log(idUsuario, piloto, tempo, interesse, equipe, curiosidade, favorito);
 
-        if (!piloto || !tempo || !interesse || !equipe || !curiosidade || !opniao) {
+        if (!piloto || !tempo || !interesse || !equipe || !curiosidade || !favorito) {
             mostrarPopupErro("Por favor, preencha todos os campos antes de enviar.");
             return;
         }
@@ -241,7 +253,7 @@
           r3Server: interesse,
           r4Server: equipe,
           r5Server: curiosidade,
-          r6Server: opniao,
+          r6Server: favorito,
         
         }),
       })

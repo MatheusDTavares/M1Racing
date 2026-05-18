@@ -73,10 +73,10 @@ function buscarCuriosidade(req,res) {
     });
 }
 
-function buscarOpniao(req,res) {
-    resultadoModel.buscarResultadosGerais('r6', 'Opniao')
-    .then(function(opniao)  {
-        res.status(200).json(opniao);
+function buscarfavorito(req,res) {
+    resultadoModel.buscarResultadosGerais('r6', 'favorito')
+    .then(function(favorito)  {
+        res.status(200).json(favorito);
     })
     .catch(function(erro)  {
         console.log(erro);
@@ -94,6 +94,6 @@ module.exports = {
     buscarInteresse,
     buscarEquipe,
     buscarCuriosidade,
-    buscarOpniao
+    buscarfavorito
 
 }

@@ -108,8 +108,45 @@ function buscarPilotos() {
         });
 }
 
+function buscarGP() {
+    var instrucaoSql = `
+        SELECT G.nome as GrandePremio, count(*) as total
+        FROM pesquisa ps
+        JOIN GrandePremio G ON G.idEquipe = ps.r6
+        GROUP BY G.nome
+        ORDER BY total DESC`;
+
+    var instrucaoSqlMaior = `
+        SELECT G.nome as GP, count(*) as total
+        FROM pesquisa ps
+        JOIN GrandePremio G ON G.idEquipe = ps.r6
+        GROUP BY G.nome
+        ORDER BY total DESC
+        LIMIT 1`;
+
+    var instrucaoSqlMenor = `
+        SELECT G.nome as GP, count(*) as total
+        FROM pesquisa ps
+        JOIN GrandePremio G ON G.idEquipe = ps.r6
+        GROUP BY G.nome
+        ORDER BY total DESC
+        LIMIT 1`;
+
+    return database.executar(instrucaoSql)
+        .then(function (respostas) {
+            return database.executar(instrucaoSqlMaior)
+                .then(function (maior) {
+                    return database.executar(instrucaoSqlMenor)
+                        .then(function (menor) {
+                            return [respostas, maior[0], menor[0]];
+                        });
+                });
+        });
+}
+
 module.exports = {
     buscarResultadosGerais,
     buscarPilotos,
-    buscarEquipes
+    buscarEquipes,
+    buscarGP
 };
