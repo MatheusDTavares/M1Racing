@@ -74,9 +74,10 @@ function iniciarCorrida() {
             else if (i === 1) classePosicao += ' p2';
             else if (i === 2) classePosicao += ' p3';
 
-            // Monta o HTML de cada linha
+            
             const div = document.createElement('div');
             div.className = classeDiv;
+            // aqui está sendo setado o nome do piloto e sua posição
             div.innerHTML = `
                 <span class="${classePosicao}">${i + 1}º</span>
                 <span class="piloto-nome ${ehVoce ? 'destaque-nome' : ''}">${nome}</span>

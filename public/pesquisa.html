@@ -137,10 +137,7 @@
                             <input type="radio" id="outro" name="curiosidade" value="Outros" onclick="Aparecer(true)">
                             Outros
                         </label>
-                        <label>
-                            <input type="text" id="ipt_extra" name="curiosidade" placeholder="Conte-nos o motivo..." style="display: none;">
-                            
-                        </label>
+        
                     </div>
                     <div class="pergunta-pesquisa">
                         <p>6. O que você acha do novo formato de Sprint?</p>
@@ -316,20 +313,6 @@
     function fecharPopupErro() {
         document.getElementById('popupErroOverlay').style.display = 'none';
     }
-
-
-    function Aparecer(mostrar) {
-    const OutroTexto = document.getElementById('ipt_extra');
-    if (mostrar) {
-        OutroTexto.style.display = 'block';
-        // Coloca o cursor no campo automaticamente
-        OutroTexto.focus(); 
-    } else {
-        OutroTexto.style.display = 'none';
-        // Limpa o texto se o usuário mudar de ideia
-        OutroTexto.value = ''; 
-    }
-}
 
 window.onload = function() {
         atualizarMenuProtegido();

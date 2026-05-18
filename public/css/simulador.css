@@ -4,7 +4,7 @@
 /**/
 /* Caixa geral da pagina */
 .sim-wrap {
-    /*trocando a fonte*/
+    
   padding: 32px;
   max-width: 700px;
   margin: 0 auto;
@@ -15,8 +15,6 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  /*Linha vermelha*/
-  border-bottom: 2px solid #e10600;
   padding-bottom: 12px;
   margin-bottom: 20px;
 }
@@ -25,7 +23,6 @@
   font-size: 26px;
   font-weight: 700;
   margin: 0;
-  letter-spacing: 2px;
   color: #ffffff;
 }
 
@@ -45,7 +42,6 @@
   font-size: 13px;
   color: #aaaaaa;
   margin-bottom: 6px;
-  letter-spacing: 1px;
 }
 
 .sim-select {
@@ -53,8 +49,6 @@
   padding: 10px 14px;
   font-size: 16px;
   font-weight: 600;
-  border-radius: 6px;
-  border: 1.5px solid #333;
   background: #1e1e2a;
   color: #ffffff;
 }
@@ -65,12 +59,8 @@
   background: #e10600;
   color: #ffffff;
   border: none;
-  border-radius: 6px;
   font-size: 16px;
   font-weight: 700;
-  letter-spacing: 1px;
-  /*animações suaves*/
-  transition: background 0.15s, transform 0.1s;
 }
 
 /**/
@@ -93,7 +83,6 @@
 .volta-badge {
   font-size: 13px;
   font-weight: 600;
-  letter-spacing: 1px;
   color: #aaaaaa;
 }
 
@@ -101,16 +90,13 @@
 .progresso-bar {
   height: 4px;
   background: #2e2e3a;
-  border-radius: 2px;
   margin-bottom: 16px;
 }
 
 .progresso-fill {
   height: 100%;
   background: #e10600;
-  border-radius: 2px;
   width: 0%;
-  transition: width 0.8s ease;
 }
 
 /* GRID DA CORRIDA */
@@ -125,10 +111,8 @@
   align-items: center;
   gap: 10px;
   padding: 8px 12px;
-  border-radius: 6px;
   border: 1px solid #2e2e3a;
   background: #1e1e2a;
-  transition: all 0.5s ease;
   font-size: 15px;
   font-weight: 600;
   color: #ffffff;
@@ -137,13 +121,11 @@
 /* Linha do piloto que o usuário escolheu */
 .linha-piloto.destaque {
   border-color: #e10600;
-  background: rgba(225, 6, 0, 0.1);
 }
 
 /* Linha do líder da corrida */
 .linha-piloto.lider {
   border-color: #FFD700;
-  background: rgba(255, 215, 0, 0.07);
 }
 
 /* Posições */
@@ -168,37 +150,13 @@
   color: #e10600;
 }
 
-/* tags */
-.tag-voce {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 1px;
-  background: #e10600;
-  color: #ffffff;
-  padding: 2px 7px;
-  border-radius: 4px;
-}
-
-.tag-lider {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 1px;
-  background: #FFD700;
-  color: #6b5000;
-  padding: 2px 7px;
-  border-radius: 4px;
-}
-
 /* resultado final */
 .resultado-final {
   margin-top: 16px;
   padding: 14px 16px;
-  border-radius: 8px;
-  border: 2px solid #e10600;
   text-align: center;
   font-size: 17px;
   font-weight: 700;
-  letter-spacing: 1px;
   color: #ffffff;
   display: none;
 }

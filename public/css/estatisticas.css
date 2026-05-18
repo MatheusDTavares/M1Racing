@@ -8,6 +8,12 @@ body {
     font-family: 'Outfit', sans-serif;
 }
 
+main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
 /*  BANNER  */
 
 .pesquisa-banner {
@@ -57,11 +63,6 @@ body {
     letter-spacing: 1px;
 }
 
-.caixa-pesquisa button:hover {
-    background-color: #cc1400;
-    transform: scale(1.03);
-}
-
 .caixa-pesquisa button:active {
     transform: scale(0.98);
     background-color: #a81000;
@@ -73,9 +74,6 @@ body {
     transition: 0.3s ease;
 }
 
-.caixa-pesquisa a:hover {
-    color: #ff5e4d;
-}
 
 /*  ÁREA DOS GRÁFICOS  */
 
@@ -131,10 +129,7 @@ body {
     margin-bottom: 20px;
 }
 
-.info-cards:hover {
-    /* borda vermelha ao passar o mouse */
-    border-color: #FF1801; 
-}
+
 
 .info-cards h2 {
     width: 100%;
@@ -215,18 +210,11 @@ body {
     align-items: center;
     justify-content: center;
     color: #ffffff;
-    background-color: #15151e;
+    background-color: #1d1d1d;
     width: 100%;
-    padding: 20px;
-    border: 2px solid #FF1801; 
     border-radius: 10px;
     font-size: 20px;
     font-weight: 600;
     text-align: center;
-    box-sizing: border-box;
-    transition: background-color 0.2s ease;
-}
-
-.kpi:hover {
-    background-color: #1f1f2e;
+    
 }

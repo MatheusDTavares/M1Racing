@@ -369,6 +369,22 @@ h4{
   color:#791717
 }
 
+.imagemtexto{
+    margin-top: 50px;
+    text-align: start;
+}
+
+.imagemtexto img{
+  border-radius: 50px;
+}
+
+.seta{
+    height: 100px;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    margin: 50px;
+}
+
 
 
 
