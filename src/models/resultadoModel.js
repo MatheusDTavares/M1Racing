@@ -117,7 +117,7 @@ function buscarGrandePremios() {
         ORDER BY total DESC`;
 
     var instrucaoSqlMaior = `
-        SELECT G.nome as GP, count(*) as total
+        SELECT G.nome as GrandePremio, count(*) as total
         FROM pesquisa ps
         JOIN GrandePremio G ON G.idGp = ps.r6
         GROUP BY G.nome
@@ -125,11 +125,11 @@ function buscarGrandePremios() {
         LIMIT 1`;
 
     var instrucaoSqlMenor = `
-        SELECT G.nome as GP, count(*) as total
+        SELECT G.nome as GrandePremio, count(*) as total
         FROM pesquisa ps
         JOIN GrandePremio G ON G.idGp = ps.r6
         GROUP BY G.nome
-        ORDER BY total DESC
+        ORDER BY total ASC
         LIMIT 1`;
 
     return database.executar(instrucaoSql)
