@@ -108,18 +108,18 @@ function buscarPilotos() {
         });
 }
 
-function buscarGP() {
+function buscarGrandePremios() {
     var instrucaoSql = `
         SELECT G.nome as GrandePremio, count(*) as total
         FROM pesquisa ps
-        JOIN GrandePremio G ON G.idEquipe = ps.r6
+        JOIN GrandePremio G ON G.idGp = ps.r6
         GROUP BY G.nome
         ORDER BY total DESC`;
 
     var instrucaoSqlMaior = `
         SELECT G.nome as GP, count(*) as total
         FROM pesquisa ps
-        JOIN GrandePremio G ON G.idEquipe = ps.r6
+        JOIN GrandePremio G ON G.idGp = ps.r6
         GROUP BY G.nome
         ORDER BY total DESC
         LIMIT 1`;
@@ -127,7 +127,7 @@ function buscarGP() {
     var instrucaoSqlMenor = `
         SELECT G.nome as GP, count(*) as total
         FROM pesquisa ps
-        JOIN GrandePremio G ON G.idEquipe = ps.r6
+        JOIN GrandePremio G ON G.idGp = ps.r6
         GROUP BY G.nome
         ORDER BY total DESC
         LIMIT 1`;
@@ -148,5 +148,5 @@ module.exports = {
     buscarResultadosGerais,
     buscarPilotos,
     buscarEquipes,
-    buscarGP
+    buscarGrandePremios
 };

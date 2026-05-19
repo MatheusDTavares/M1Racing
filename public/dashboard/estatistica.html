@@ -132,16 +132,16 @@
             <h2>Opinião sobre o formato Sprint</h2>
             <div class="conteudo-info">
                 <div class="grafico">
-                    <canvas id="favorito"></canvas>
+                    <canvas id="grandepremio"></canvas>
                 </div>
                 <div class="info-kpi">
                     <div class="card">
                         <h3>Opinião mais comum:</h3>
-                        <div class="kpi"><p id="maiorFavorito"></p></div>
+                        <div class="kpi"><p id="maiorGrandePremio"></p></div>
                     </div>
                     <div class="card a">
                         <h3>Opinião menos comum:</h3>
-                        <div class="kpi"><p id="menorFavorito"></p></div>
+                        <div class="kpi"><p id="menorGrandePremio"></p></div>
                     </div>
                 </div>
             </div>
@@ -170,10 +170,10 @@ function obterDadosGrafico() {
         fetch('/resultado/tempo').then(r => r.json()),
         fetch('/resultado/interesse').then(r => r.json()),
         fetch('/resultado/curiosidade').then(r => r.json()),
-        fetch('/resultado/favorito').then(r => r.json())
+        fetch('/resultado/grandepremio').then(r => r.json())
     ])
-    .then(function([piloto, equipe, tempo, interesse, curiosidade, favorito]) {
-        plotarGrafico({ piloto, equipe, tempo, interesse, curiosidade, favorito });
+    .then(function([piloto, equipe, tempo, interesse, curiosidade, grandepremio]) {
+        plotarGrafico({ piloto, equipe, tempo, interesse, curiosidade, grandepremio });
     })
     .catch(function(erro) {
         console.error('Erro ao buscar dados:', erro);
@@ -223,7 +223,7 @@ function preencherKPI(idMaior, idMenor, dadoMaior, dadoMenor, campo) {
     }
 }
 
-function plotarGrafico({ piloto, equipe, tempo, interesse, curiosidade, favorito }) {
+function plotarGrafico({ piloto, equipe, tempo, interesse, curiosidade, grandepremio }) {
 
     criarGrafico(
         'pilotoGrafico',
@@ -272,13 +272,13 @@ function plotarGrafico({ piloto, equipe, tempo, interesse, curiosidade, favorito
     preencherKPI('maiorCuriosidade', 'menorCuriosidade', curiosidade[1], curiosidade[2], 'Curiosidade');
 
     criarGrafico(
-        'favoritoGrafico',
-        favorito[0].map(i => i.Favorito),
-        favorito[0].map(i => i.total),
+        'grandepremioGrafico',
+        grandepremio[0].map(i => i.GrandePremio),
+        grandepremio[0].map(i => i.total),
         'bar',
         ['#e10600','#888888','#00d2be']
     );
-    preencherKPI('maiorFavorito', 'menorFavorito', favorito[1], favorito[2], 'Favorito');
+    preencherKPI('maiorGrandePremio', 'menorGrandePremio', grandepremio[1], grandepremio[2], 'GrandePremio');
 }
 
 </script>

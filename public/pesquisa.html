@@ -151,7 +151,7 @@
                     <div class="pergunta-pesquisa">
                             <p>5. Se pudesse assistir um GP ao vivo, qual escolheria?</p>
 
-                            <select name="favorito" id="ipt_gpFavorito">
+                            <select name="grandepremio" id="ipt_grandepremio">
                                 <option value="">Selecione um GP</option>
 
                                 <option value="1">GP de Mônaco</option>
@@ -227,15 +227,15 @@
         var interesse = getCheckedValue("interesse");
         var equipe = document.getElementById("ipt_equipe").value;
         var curiosidade = getCheckedValue("curiosidade");
-        var favorito = document.getElementById("ipt_gpFavorito").value;
+        var grandepremio = document.getElementById("ipt_grandepremio").value;
         
         
 
         
 
-        console.log(idUsuario, piloto, tempo, interesse, equipe, curiosidade, favorito);
+        console.log(idUsuario, piloto, tempo, interesse, equipe, curiosidade, grandepremio);
 
-        if (!piloto || !tempo || !interesse || !equipe || !curiosidade || !favorito) {
+        if (!piloto || !tempo || !interesse || !equipe || !curiosidade || !grandepremio) {
             mostrarPopupErro("Por favor, preencha todos os campos antes de enviar.");
             return;
         }
@@ -253,7 +253,7 @@
           r3Server: interesse,
           r4Server: equipe,
           r5Server: curiosidade,
-          r6Server: favorito,
+          r6Server: grandepremio,
         
         }),
       })
