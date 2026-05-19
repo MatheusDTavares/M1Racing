@@ -2,7 +2,7 @@ let imagem = 1;
 
 function esquerda() {
     if(imagem == 1) {
-        imagem = 3
+        imagem = 10
     } else {
         imagem --
     }
@@ -10,8 +10,8 @@ function esquerda() {
 }
 
 function direita() {
-    if(imagem == 3) {
-        imagem == 1
+    if(imagem == 10) {
+        imagem = 1
     } else {
         imagem++
     }
@@ -23,45 +23,45 @@ function conteudo() {
     let textoM = document.getElementById('texto')
     
     if(imagem == 1) {
-        textoM.innerHTML = `<h1>Como surgiu meu interesse pelo tema?</h1><p>Meu interesse por Fórmula 1 surgiu ainda na infância, entre 2011 e 2012. 
+        textoM.innerHTML = `<div class="text"><h4>Como surgiu meu interesse pelo tema?</h4><p>Meu interesse por Fórmula 1 surgiu ainda na infância, entre 2011 e 2012. 
           Eu lembro claramente dos domingos em que meu pai acordava cedo para assistir às corridas do Felipe Massa correndo pela Ferrari. 
-          Naquela época, meus pais estavam construindo nossa casa, porque ainda morávamos na casa dos meus avós.</p><br>`
+          Naquela época, meus pais estavam construindo nossa casa, porque ainda morávamos na casa dos meus avós.</p></div><br>`
     } else if (imagem == 2) {
-        textoM.innerHTML = `<h1>Como surgiu meu interesse pelo tema?</h1><p>
+        textoM.innerHTML = `<h4>Como surgiu meu interesse pelo tema?</h4><p>
           Durante essa fase, nosso vizinho acabou se tornando muito amigo do meu pai, e consequentemente o filho dele virou meu amigo também. 
           O assunto principal entre nossos pais sempre era corrida, Fórmula 1 e automobilismo. O pai dele inclusive competia de moto em campeonatos no Autódromo de Interlagos, 
           e um dia ele convidou eu e meu pai para assistirmos uma corrida. Essa foi minha primeira vez em um autódromo, 
           e eu fiquei completamente impressionado com aquele ambiente, com o barulho dos motores e toda a emoção das pistas.
         </p>`
     } else if (imagem == 3) {
-        textoM.innerHTML = `<h1>Como surgiu meu interesse pelo tema?</h1><p>
+        textoM.innerHTML = `<h4>Como surgiu meu interesse pelo tema?</h4><p>
           Desde pequeno, sempre fui apaixonado por duas coisas: tecnologia e automobilismo. 
           Uma das minhas melhores lembranças era passar noites jogando Gran Turismo 5 com meu pai em corridas online. 
           Eu ficava extremamente empolgado nas primeiras voltas, mas depois de muitas voltas acabava deixando ele terminar as corridas sozinho. 
           Essas experiências fortaleceram ainda mais meu amor por corridas.
         </p>`
     } else if (imagem == 4) {
-         textoM.innerHTML = `<h1>Como surgiu meu interesse pelo tema?</h1><p>
+         textoM.innerHTML = `<h4>Como surgiu meu interesse pelo tema?</h4><p>
         Meu gosto pelo automobilismo também aparecia em vários momentos da minha vida. Tive festa de aniversário com tema de corrida, 
         ganhei um macacão da Ferrari e sempre gostei quando meu pai acelerava o carro durante as viagens. 
         Meus pais até contam que eu falava “liga o turbo” quando era pequeno.
       </p>`
     } else if (imagem == 5) {
-        textoM.innerHTML = `<h1>Como esse tema está presente no meu dia a dia?</h1><p>Hoje em dia, 
+        textoM.innerHTML = `<h4>Como esse tema está presente no meu dia a dia?</h4><p>Hoje em dia, 
         o automobilismo continua sendo algo muito presente na minha vida. 
         Sempre acompanho corridas, vídeos e conteúdos sobre pilotagem. 
         Além disso, também gosto da parte tecnológica envolvida na Fórmula 1, 
         como análise de dados, desempenho dos carros, estratégias e engenharia.</p><br><p>Esse interesse também se conecta diretamente com minha área de estudos em tecnologia. 
         Por isso escolhi esse tema para meu projeto individual: ele une algo que sempre fez parte da minha história com algo que quero seguir profissionalmente.</p>`
     } else if (imagem == 6) {
-         textoM.innerHTML = `<h1>Valores representados no projeto</h1><p>Meu projeto representa vários valores importantes para mim:
+         textoM.innerHTML = `<h4>Valores representados no projeto</h4><p>Meu projeto representa vários valores importantes para mim:
 Persistência, porque corridas são decididas nos detalhes e exigem concentração até o final.
 Competitividade saudável, sempre buscando melhorar desempenho e aprender mais.
 Disciplina, já que automobilismo exige preparação, estratégia e controle emocional.
 Conexão familiar, porque grande parte da minha paixão nasceu dos momentos que vivi com meu pai.
 Paixão por tecnologia, principalmente pela análise de dados e desempenho presente na Fórmula 1.</p>`
     } else if (imagem == 7) {
-         textoM.innerHTML = `<h1>Momentos marcantes que reforçaram essa paixão</h1><p>Mesmo sem nunca ter corrido de kart quando era criança, 
+         textoM.innerHTML = `<h4>Momentos marcantes que reforçaram essa paixão</h4><p>Mesmo sem nunca ter corrido de kart quando era criança, 
          eu sempre acompanhava vídeos e aprendia sobre pilotagem. 
          Isso fez diferença quando finalmente tive a oportunidade de correr.</p><br><p>Na minha festa de 13 anos, 
          meus pais fizeram a comemoração na SP Diversões, 
@@ -80,14 +80,14 @@ Paixão por tecnologia, principalmente pela análise de dados e desempenho prese
          chamada por nós de “Neguinha”. Ele chegou a competir com ela utilizando o número 43,
           algo que marcou muito minha infância.</p>`
     } else if (imagem == 8) {
-         textoM.innerHTML = `<h1>Maior dificuldade no projeto</h1><p></p><br>`
+         textoM.innerHTML = `<h4>Maior dificuldade no projeto</h4><p></p><br>`
     } else if (imagem == 9) {
-         textoM.innerHTML = `<h1>Maior superação</h1><p>Minha maior superação foi conseguir unir minhas duas maiores paixões: tecnologia e automobilismo. 
+         textoM.innerHTML = `<h4>Maior superação</h4><p>Minha maior superação foi conseguir unir minhas duas maiores paixões: tecnologia e automobilismo. 
          Mais do que apenas criar um site, 
          consegui desenvolver algo que representa minha história, 
          minhas memórias e os momentos que vivi com minha família.</p>`
     } else if (imagem == 10) {
-         textoM.innerHTML = `<h1>Agradecimentos</h1><p>Grande parte dessa paixão surgiu por causa do meu pai. 
+         textoM.innerHTML = `<h4>Agradecimentos</h4><p>Grande parte dessa paixão surgiu por causa do meu pai. 
          Foi ele quem me apresentou o mundo das corridas, das viagens, dos jogos e das pistas. 
          Muitos dos meus melhores momentos da infância envolveram automobilismo, 
          então esse projeto também representa uma homenagem a tudo que vivi ao lado dele.</p>`

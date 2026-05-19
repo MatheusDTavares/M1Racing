@@ -1,0 +1,264 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Barlow', 'Segoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #15151e;
+  transition: 4;
+}
+
+:root {
+  --tamanho-header: 80px;
+  --tudu: 100vh;
+  --tamanho-footer: 45px;
+}
+
+.container {
+  display: flex;
+  width: 80%;
+  margin: auto;
+}
+
+.header {
+  height: var(--tamanho-header);
+  border-bottom: 2px solid #FF1801;
+  position: sticky;
+  top: 0px;
+  background-color: #15151e;
+  z-index: 999;
+}
+
+.header img{
+  width: 150px;
+  height: 85px;
+}
+
+.header .container {
+  align-items: center;
+  height: 100%;
+  padding: 10px;
+  gap: 900px;
+}
+
+.header a {
+  text-decoration: none;
+    color: white;
+    font-weight: normal;
+}
+
+a{
+  color: white;
+}
+
+
+button{
+  width: fit-content;
+  height: 25px;
+  border-radius: 25px;
+  
+  
+}
+
+
+li {
+  font-weight: 800;
+  color: white
+
+}
+
+.navbar {
+  width: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  list-style: none;
+  color: #FF1801;
+  gap: 15px
+  
+}
+
+
+.botao1{
+  background-color: black;
+  color: white;
+}
+.botao2{
+  background-color: red;
+  color: white;
+}
+
+.titulo {
+  color: #FF1801;
+  width: fit-content;
+  font-weight: 500;
+}
+
+.header h1 {
+  margin: 0px;
+ 
+}
+
+/* MISSÃO VISÃO VALORES */
+
+.social {
+  background-color: #FF1801;
+  display: flex;
+  color: white;
+  height: 2px;
+}
+
+.social .container {
+  justify-content: center;
+}
+
+.social .container .boxes {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  gap: 50px;
+  padding: 30px 0;
+  
+}
+
+.social p {
+  text-align: center;
+}
+
+
+
+/* FOOTER */
+
+.footer {
+  background-color: #15151e;
+  height: 150px;
+  color: #fff;
+  display: flex;
+  font-size: 15px;
+}
+
+.footer .container {
+  justify-content: center;
+  text-align: center;
+}
+
+.footer .container .version {
+  font-size: 12px;
+}
+
+
+
+
+.fundo{
+  background-color: black;
+  color: red;
+}
+.linha{
+  display: flex;
+  align-items: center;
+}
+
+.highlight {
+    background-color: yellow; /* Cor de destaque */
+    color: black; /* Cor do texto */
+}
+
+
+.secao {
+  
+  margin: 80px auto;
+  display: flex;
+  flex-direction: column;
+  padding: 0 20px;
+}
+
+.secao p{
+  color: white;
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  align-items: center;
+}
+
+/* Cada linha */
+.item {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  margin: 80px auto;
+  padding-left: 40px;
+  width: 1000px;
+  justify-content: center;
+}
+
+/* Alternar lado */
+.item.reverse {
+  flex-direction: row-reverse;
+  padding-right: 40px;
+}
+
+
+/* Hover bonito */
+.item img:hover {
+  transform: scale(1.05);
+}
+
+/* Texto */
+.text {
+  max-width: 400px;
+}
+
+.text h4 {
+  color: rgb(189, 187, 187);
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.text p {
+  font-size: 16px;
+}
+.text a{
+  font-size: 32px;
+  font-weight: bold;
+}
+
+h4{
+  color:#791717
+}
+
+/*seta*/
+
+.seta{
+    height: 150px;
+    width: 200px;
+    margin: 50px;
+    cursor: pointer;
+}
+
+.setainvertida{
+    rotate: -180deg;
+    height: 150px;
+    width: 200px;
+    margin: 50px;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
