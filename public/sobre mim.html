@@ -12,14 +12,14 @@
     <script src="./js/Story.js"></script>
 
     <link rel="stylesheet" href="./css/sobremim.css">
-    <link rel="icon" href="./assets/icon/m1racing.png">
+    <link rel="icon" href="assets/icon/m1racing.png">
     <link rel="preconnect" href="https://fonts.gstatic.com">
 </head>
 
 <body>
     <div class="header">
       <div class="container">
-        <a href="#"><h1 class="titulo"><img src="./assets/icon/m1racing.png" alt=""></h1></a>
+        <a href="./index.html"><h1 class="titulo"><img src="assets/icon/m1racing.png" alt=""></h1></a>
         <ul class="navbar">
           <li><a href="./dashboard/estatistica.html">Estatísticas</a></li>
           <li><a href="./pesquisa.html">Pesquisa</a></li>
@@ -41,7 +41,7 @@
     <div class="secao">
           <h1>Minha História</h1>
           <div class="item">
-            <img class="setainvertida" src="./assets/icon/icons8-flecha-90.png" onclick="esquerda()">
+            <img class="setainvertida" src="assets/icon/icons8-flecha-90.png" onclick="esquerda()">
             
             <div id="texto">
     <div class="text">
@@ -51,7 +51,7 @@
             </div>
     </div>
 </div>
-                <img class="seta" src="./assets/icon/icons8-flecha-90.png" onclick="direita()">
+                <img class="seta" src="assets/icon/icons8-flecha-90.png" onclick="direita()">
             </div>
         
           
@@ -72,7 +72,7 @@
        
     <div class="footer">
         <div class="container">
-            <h4>Feito por <a href="./sobre mim.html">Matheus.Tavares</a> &hearts; SPTech &copy; 2026</h4>
+            <h4>Feito por <a href="sobre mim.html">Matheus.Tavares</a> &hearts; SPTech &copy; 2026</h4>
             <span class="version">v1.0.0</span>
         </div>
     </div>
@@ -84,7 +84,7 @@
 
     if (nome) {
         // Usuário logado → troca os botões por "Perfil"
-        document.getElementById("menuLogin").innerHTML = `<a href="./perfil.html">${nome}</a>`;
+        document.getElementById("menuLogin").innerHTML = `<a href="perfil.html">${nome}</a>`;
         document.getElementById("menuCadastro").style.display = "none";
     }
 };

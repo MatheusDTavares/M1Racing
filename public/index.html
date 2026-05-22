@@ -11,14 +11,14 @@
     <script src="./js/sessao.js"></script>
 
     <link rel="stylesheet" href="./css/estilo.css">
-    <link rel="icon" href="./assets/icon/m1racing.png">
+    <link rel="icon" href="assets/icon/m1racing.png">
     <link rel="preconnect" href="https://fonts.gstatic.com">
 </head>
 
 <body>
     <div class="header">
       <div class="container">
-        <a href="#"><h1 class="titulo"><img src="./assets/icon/m1racing.png" alt=""></h1></a>
+        <a href="#"><h1 class="titulo"><img src="assets/icon/m1racing.png" alt=""></h1></a>
         <ul class="navbar">
           <li><a href="./dashboard/estatistica.html">Estatísticas</a></li>
           <li><a href="./pesquisa.html">Pesquisa</a></li>
@@ -68,7 +68,7 @@
       </p>
       
       </div>
-      <img src="../public/assets/imgs/Captura de tela de 2026-04-23 12-29-08.png">
+      <img src="assets/imgs/Captura de tela de 2026-04-23 12-29-08.png">
       
     
     </div>
@@ -84,7 +84,7 @@
       <div class="secao">
         
           <div class="item">
-            <img src="../public/assets/imgs/cooper.jpeg">
+            <img src="assets/imgs/cooper.jpeg">
             <div class="text">
             <!-- Aqui eu coloquei o javascript:void-->
             <a onclick="validarAcesso('Carros/1960.html')">Cooper T51/T53</a>
@@ -95,7 +95,7 @@
         
         
           <div class="item reverse">
-            <img src="../public/assets/imgs/lotus.webp">
+            <img src="assets/imgs/lotus.webp">
             <div class="text">
             <a onclick="validarAcesso('Carros/190.html')" class="nav a">Lotus 72</a>
             <h4>70's</h4>
@@ -104,7 +104,7 @@
           </div>
         
           <div class="item">
-            <img src="../public/assets/imgs/Williams.jpeg">
+            <img src="assets/imgs/Williams.jpeg">
             <div class="text">
             
             <a onclick="validarAcesso('Carros/1980.html')">Williams FW07B</a>
@@ -115,7 +115,7 @@
         
         
           <div class="item reverse">
-            <img src="../public/assets/imgs/Mclaren_mp4_5.jpg">
+            <img src="assets/imgs/Mclaren_mp4_5.jpg">
              <div class="text">
             
             <a onclick="validarAcesso('Carros/1990.html')">McLaren MP4/5B</a>
@@ -125,7 +125,7 @@
           </div>
         
           <div class="item">
-            <img src="../public/assets/imgs/ferrari 2000's.jpeg">
+            <img src="assets/imgs/ferrari 2000's.jpeg">
              <div class="text">
             
             <a onclick="validarAcesso('Carros/2000.html')">Ferrari F2000</a>
@@ -136,7 +136,7 @@
         
         
           <div class="item reverse">
-            <img src="../public/assets/imgs/rb6.jpeg">
+            <img src="assets/imgs/rb6.jpeg">
              <div class="text">
             
             <a onclick="validarAcesso('Carros/2010.html')">Red Bull RB6</a>
@@ -146,7 +146,7 @@
           </div>
         
           <div class="item">
-            <img src="../public/assets/imgs/W11.jpeg">
+            <img src="assets/imgs/W11.jpeg">
              <div class="text">
             
             <a onclick="validarAcesso('Carros/2020.html')">AMG F1 W11</a>
@@ -166,7 +166,7 @@
 
     <div class="footer">
         <div class="container">
-            <h4>Feito por <a href="./sobre mim.html">Matheus.Tavares</a> &hearts; SPTech &copy; 2026</h4>
+            <h4>Feito por <a href="sobre mim.html">Matheus.Tavares</a> &hearts; SPTech &copy; 2026</h4>
             <span class="version">v1.0.0</span>
         </div>
     </div>
@@ -178,7 +178,7 @@
 
     if (nome) {
         // Usuário logado → troca os botões por "Perfil"
-        document.getElementById("menuLogin").innerHTML = `<a href="./perfil.html">${nome}</a>`;
+        document.getElementById("menuLogin").innerHTML = `<a href="perfil.html">${nome}</a>`;
         document.getElementById("menuCadastro").style.display = "none";
     }
 };
