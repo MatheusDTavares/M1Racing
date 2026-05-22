@@ -134,7 +134,7 @@ li {
 .footer {
   background-color: #15151e;
   height: 150px;
-  color: #fff;
+  color: #FF1801;
   display: flex;
   font-size: 15px;
 }
@@ -143,7 +143,7 @@ li {
   justify-content: center;
   text-align: center;
 }
-
+  
 .footer .container .version {
   font-size: 12px;
 }
@@ -183,19 +183,13 @@ li {
   gap: 50px;
   margin: 80px auto;
   padding-left: 40px;
-  justify-content: center;
-}
-
-/* Alternar lado */
-.item.reverse {
-  flex-direction: row-reverse;
-  padding-right: 40px;
+  justify-content: space-around;
 }
 
 /* Imagem */
 .item img {
   width: 200px;
-  border-radius: 10px;
+  border-radius: 10px;  
   transition: 0.3s;
   height: 150px;
 }
@@ -217,7 +211,7 @@ li {
 }
 
 .text p {
-  font-size: 16px;
+  font-size: 20px;
 }
 .text a{
   font-size: 32px;
@@ -242,6 +236,26 @@ li {
 
 .setainvertida img{
   size: 20px;
+}
+
+.conteudo-flex {
+  display: flex;
+  align-items: center; 
+  gap: 20px;          
+}
+
+/* Garante que o texto ocupe a maior parte do espaço e a imagem não esmague */
+.conteudo-flex p {
+  flex: 1;    
+}
+
+/* Ajuste específico para a imagem que está dentro do texto */
+.conteudo-flex img {
+  width: 200px;   
+  height: auto;      
+  border-radius: 10px;
+  /*Aqui funciona o mesmo que o flex: 1; do <p> é para a imagem usar todo o espaço livre setado*/
+  object-fit: cover; 
 }
 
 
