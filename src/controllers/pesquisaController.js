@@ -20,7 +20,7 @@ function verificar(req,res){
 }
 
 function guardar(req,res) {
-    //Crie uma variável que vá recuperar os valores do arquivo pesquisa.html
+    //Criei uma variável que vá recuperar os valores do arquivo pesquisa.html
     var idUsuario = req.body.idUsuarioServer;
     var r1 = req.body.r1Server;
     var r2 = req.body.r2Server;

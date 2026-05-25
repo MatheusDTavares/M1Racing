@@ -157,7 +157,7 @@
 
 <script>
 
-// CORREÇÃO: window.onload unificado — chama menu E gráficos juntos
+
 window.onload = function() {
     atualizarMenuProtegido();
     obterDadosGrafico();
@@ -206,7 +206,7 @@ function criarGrafico(idCanvas, labels, valores, tipo, cor) {
     });
 }
 
-// CORREÇÃO: verifica se os dados existem antes de preencher os KPIs
+
 function preencherKPI(idMaior, idMenor, dadoMaior, dadoMenor, campo) {
     if (dadoMaior) {
         document.getElementById(idMaior).innerHTML =

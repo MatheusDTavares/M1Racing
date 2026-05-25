@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>M1 Racing | Página Inicial</title>
+    <title>M1 Racing | 1960</title>
 
     <script src="./js/sessao.js"></script>
 
@@ -13,27 +13,52 @@
     <link rel="icon" href="./assets/icon/favicon2.ico">
     <link rel="preconnect" href="https://fonts.gstatic.com">
 </head>
-<body onload="">
+
+
+<body>
     <div class="header">
       <div class="container">
-        <h1 class="titulo">M1 Racing</h1>
+        <a href="#"><h1 class="titulo"><img src="assets/icon/m1racing.png" alt=""></h1></a>
         <ul class="navbar">
-          <li class="agora">
-            <a href="#">Inicial</a>
-          </li>
-          <li>
-            <a href="simulador.html">Corrida</a>
-          </li>
+          <li><a href="./dashboard/estatistica.html">Estatísticas</a></li>
+          <li><a href="./pesquisa.html">Pesquisa</a></li>
+          <li><a href="simulador.html">Corrida</a></li>
           <li>|</li>
-          <li>
-            <a href="login.html">Login</a>
-          </li>
-          <li>
-            <a href="cadastro.html">Cadastro</a>
-          </li>
+          <li id="menuLogin"><button class="botao1"><a href="login.html"><strong>Login</strong></a></button></li>
+          <li id="menuCadastro"><button class="botao2"><a href="cadastro.html"><strong>Cadastro</strong></a></button></li>
         </ul>
       </div>
     </div>
+
+    <div class="social">
+      <div class="container">
+        <div class="boxes">
+          
+        </div>
+      </div>
+    </div>
+ 
+      <div class="secao">
+        
+          <div class="item">
+            <img src="assets/imgs/cooper.jpeg">
+            <div class="text">
+            <!-- Aqui eu coloquei o javascript:void-->
+            <a onclick="validarAcesso('Carros/1960.html')">Cooper T51/T53</a>
+            <h4>60's</h4>
+            </div>
+            <p>O Cooper T51/T53 foi um dos carros mais revolucionários da Fórmula 1 no final dos anos 1950 e início dos anos 1960. Ele ficou marcado por popularizar o uso do motor traseiro, uma inovação que mudou completamente o design dos carros da categoria e se tornou padrão nas décadas seguintes.</p>
+          </div>
+        
+        
+          <div class="item reverse">
+            <img src="assets/imgs/lotus.webp">
+            <div class="text">
+            <a onclick="validarAcesso('Carros/190.html')" class="nav a">Lotus 72</a>
+            <h4>70's</h4>
+              </div>
+            <p>O Lotus 72 foi um dos carros mais inovadores e bem-sucedidos da Fórmula 1 nos anos 1970. Projetado por Colin Chapman, destacou-se pelo design aerodinâmico avançado, com radiadores laterais e formato em cunha, além de introduzir soluções que influenciaram gerações futuras. Com ele, a Lotus conquistou títulos importantes e marcou uma nova era na engenharia da F1.</p>
+          </div>
 </body>
 </html>
 <script>
