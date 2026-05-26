@@ -12,8 +12,8 @@ let corredores = [
 // Segue a mesma ordem da lista de cima
 let pesos = [2, 2, 4, 6, 3, 5, 2, 6,2, 2, 2, 7, 6, 2, 1, 9, 3, 7, 4, 5, 3, 2];
 
-// Aqui a gente guarda quem tá na frente e quem tá comendo poeira
-let posicoes = [];
+// Copia dos corredores
+let posicoes = corredores.slice()
 
 // Trava pra não deixar o usuário ficar clicando feito louco no botão
 let correndo = false;
@@ -31,12 +31,13 @@ function iniciarCorrida() {
     const escolha = parseInt(document.getElementById('ipt_aposta').value);
 
     // Desativa o botão
-    const btn = document.getElementById('btnCorrer');
-    btn.disabled = true;
-    btn.textContent = 'Correndo...';
+    const botaocorrer = document.getElementById('btnCorrer');
+    botaocorrer.disabled = true;
+    botaocorrer.textContent = 'Correndo...';
 
     // Coloca todo mundo na largada, na ordem original
-    posicoes = [...corredores];
+
+    console.log(posicoes)
 
     // Mostra a área da corrida e esconde o resultado velho
     document.getElementById('areaVolta').style.display = 'block';
@@ -64,7 +65,9 @@ function iniciarCorrida() {
 
         // Pega o grid e limpa tudo que tava antes pra redesenhar
         const grid = document.getElementById('gridCorrida');
-        grid.innerHTML = '';
+        
+        // CORREÇÃO: Declarado com 'F' maiúsculo para combinar com o loop
+        let htmlFinal = "";
 
         // Só mostra os 8 primeiros
         const top8 = posicoes.slice(0, 8);
@@ -74,37 +77,47 @@ function iniciarCorrida() {
             const nome = top8[i];
 
             // Esse cara é o piloto que o usuário escolheu?
-            const ehVoce = nome === corredores[escolha];
+            const Voce = nome == corredores[escolha];
 
             // Esse cara tá na ponta, mandando ver?
-            const ehLider = i === 0;
+            const Lider = i == 0;
 
-            // Define o estilo da linha — vermelho se for você, dourado se for o líder
+            // Define o estilo da linha vermelho se for você, dourado se for o líder
             let classeDiv = 'linha-piloto';
-            if (ehVoce) classeDiv += ' destaque';
-            else if (ehLider) classeDiv += ' lider';
+            if (Voce) classeDiv += ' destaque';
+            else if (Lider) classeDiv += ' lider';
 
-            // Cor diferente pra quem tá no pódio — ouro, prata e bronze
+            // Cor diferente pra quem tá no pódio ouro, prata e bronze
             let classePosicao = 'pos-num';
-            if (i === 0) classePosicao += ' p1';
-            else if (i === 1) classePosicao += ' p2';
-            else if (i === 2) classePosicao += ' p3';
+            if (i == 0) classePosicao += ' p1';
+            else if (i == 1) classePosicao += ' p2';
+            else if (i == 2) classePosicao += ' p3';
 
-            // Cria a div que vai representar esse piloto no grid
-            const div = document.createElement('div');
-            div.className = classeDiv;
+            let classeDestaque = '';
+            let tagVoce = '';
+            let tagLider = '';
 
-            // Monta o HTML com posição, nome e as tags de "Você" e "Líder"
-            div.innerHTML = `
-                <span class="${classePosicao}">${i + 1}º</span>
-                <span class="piloto-nome ${ehVoce ? 'destaque-nome' : ''}">${nome}</span>
-                ${ehVoce ? '<span class="tag-voce">Você</span>' : ''}
-                ${ehLider && !ehVoce ? '<span class="tag-lider">Líder</span>' : ''}
+            if (Voce) {
+                classeDestaque = 'destaque-nome';
+                tagVoce = '<span class="tag-voce">Você</span>';
+            }
+
+            if (Lider && !Voce) {
+                tagLider = '<span class="tag-lider">Líder</span>';
+            }
+            
+            htmlFinal += `
+                <div class="${classeDiv}">
+                    <span class="${classePosicao}">${i + 1}º</span>
+                    <span class="piloto-nome ${classeDestaque}">${nome}</span>
+                    ${tagVoce}
+                    ${tagLider}
+                </div>
             `;
+        } // Fim do loop FOR
 
-            // Joga o card do piloto dentro do grid
-            grid.appendChild(div);
-        }
+        // ADICIONADO: Injeta o resultado final acumulado no grid da tela
+        grid.innerHTML = htmlFinal;
 
         // Se chegar na ultima volta
         if (volta >= TOTAL_VOLTAS) {
@@ -121,7 +134,7 @@ function iniciarCorrida() {
             caixaFinal.style.display = 'block';
 
             // resultado final
-            if (vencedor === corredores[escolha]) {
+            if (vencedor == corredores[escolha]) {
                 caixaFinal.className = 'resultado-final vitoria';
                 caixaFinal.textContent = 'Você venceu a corrida!';
             } else {
@@ -130,8 +143,8 @@ function iniciarCorrida() {
             }
 
             // Libera o botão pra tentar de novo
-            btn.disabled = false;
-            btn.textContent = '↺ Correr de novo';
+            botaocorrer.disabled = false;
+            botaocorrer.textContent = '↺ Correr de novo';
             correndo = false;
         }
 
