@@ -5,7 +5,7 @@ html {
 }
 
 body {
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 main {
@@ -40,7 +40,7 @@ main {
     padding: 30px;
     width: 50%;
     color: #dddddd;
-    font-family: 'Outfit', sans-serif;
+     font-family: 'Courier New', Courier, monospace;
 }
 
 .caixa-pesquisa h2 {
@@ -134,7 +134,7 @@ main {
 .info-cards h2 {
     width: 100%;
     color: #ffffff;
-    font-family: 'Outfit', sans-serif;
+     font-family: 'Courier New', Courier, monospace;
     text-align: center;
     font-size: 26px;
     margin: 0 0 10px 0;
