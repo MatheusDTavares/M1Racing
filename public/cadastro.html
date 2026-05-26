@@ -73,7 +73,7 @@
           <img src="./assets/circle-loading.gif" id="loading-gif" />
         </div>
 
-        <div id="div_erros_login"></div>
+        <div id="div_erros_login">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</div>
       </div>
     </div>
   </div>
@@ -92,20 +92,16 @@
 
 <script>
 
-  // Array para armazenar empresas cadastradas para validação de código de ativação 
-  let listaEmpresasCadastradas = [];
-
   function cadastrar() {
-    // aguardar();
-
+    
+    
     //Recupere o valor da nova input pelo nome do id
     // Agora vá para o método fetch logo abaixo
     var nomeVar = nome_input.value;
     var emailVar = email_input.value;
     var senhaVar = senha_input.value;
     var confirmacaoSenhaVar = confirmacao_senha_input.value;
-    // var codigoVar = codigo_input.value;
-    // var idEmpresaVincular
+    
 
     // Verificando se há algum campo em branco
     if (
@@ -113,15 +109,39 @@
       emailVar == "" ||
       senhaVar == "" ||
       confirmacaoSenhaVar == ""
-      // codigoVar == ""
-    ) {
-      cardErro.style.display = "block";
+    
+    ) 
+      {
+      div_erros_login.style.display = "block"
       mensagem_erro.innerHTML =
         "(Mensagem de erro para todos os campos em branco)";
 
       finalizarAguardar();
       return false;
-    } else {
+    } if(
+      senhaVar != confirmacaoSenhaVar
+    )
+    {
+      cardErro.style.display = "block"
+      mensagem_erro.innerHTML =
+        "(As senhas não são as mesmas)";
+
+      finalizarAguardar();
+      return false;
+    }
+
+    if(
+      !emailVar.includes("@")
+    ) {
+      cardErro.style.display = "block"
+      mensagem_erro.innerHTML =
+        "(falta @ no seu email)";
+        
+
+      finalizarAguardar();
+      return false;
+    }
+      else {
       setInterval(sumirMensagem, 5000);
     }
 
@@ -137,14 +157,14 @@
         nomeServer: nomeVar,
         emailServer: emailVar,
         senhaServer: senhaVar,
-        // idEmpresaVincularServer: idEmpresaVincular
+       
       }),
     })
       .then(function (resposta) {
         console.log("resposta: ", resposta);
 
         if (resposta.ok) {
-          cardErro.style.display = "block";
+          cardErro.style.display = "block"
 
           mensagem_erro.innerHTML =
             "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
@@ -168,6 +188,6 @@
   }
 
   function sumirMensagem() {
-    cardErro.style.display = "none";
+    cardErro.style.display = "none"
   }
 </script>

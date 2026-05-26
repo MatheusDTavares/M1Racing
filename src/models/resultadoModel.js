@@ -1,13 +1,17 @@
+// Importa o config do banco pra executar as queries
 var database = require("../database/config")
 
+// Busca os resultados gerais de uma pergunta retorna todos, o mais votado e o menos votado
 function buscarResultadosGerais(resposta, apelido) {
+
+    // Busca todos os resultados agrupados e ordenados do maior pro menor
     var instrucaoSql = `
         SELECT ${resposta} as ${apelido}, count(*) as total
         FROM pesquisa
         GROUP BY ${resposta}
         ORDER BY total DESC`;
 
-    
+    // Busca só o mais votado
     var instrucaoSqlMaior = `
         SELECT ${resposta} as ${apelido}, count(*) as total
         FROM pesquisa
@@ -15,6 +19,7 @@ function buscarResultadosGerais(resposta, apelido) {
         ORDER BY total DESC
         LIMIT 1`;
 
+    // Busca só o menos votado
     var instrucaoSqlMenor = `
         SELECT ${resposta} as ${apelido}, count(*) as total
         FROM pesquisa
@@ -22,20 +27,21 @@ function buscarResultadosGerais(resposta, apelido) {
         ORDER BY total ASC
         LIMIT 1`;
 
-    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    // Executa as três queries em sequência e retorna tudo junto num array
     return database.executar(instrucaoSql)
         .then(function (respostas) {
             return database.executar(instrucaoSqlMaior)
                 .then(function (maior) {
                     return database.executar(instrucaoSqlMenor)
                         .then(function (menor) {
-                            // CORREÇÃO: maior[0] e menor[0] para pegar o objeto, não o array
+                            // Retorna [todos os resultados, o maior, o menor]
                             return [respostas, maior[0], menor[0]];
                         });
                 });
         });
 }
 
+// Busca os resultados de equipes favoritas fazendo join com a tabela de equipes
 function buscarEquipes() {
     var instrucaoSql = `
         SELECT e.nome as Equipe, count(*) as total
@@ -72,6 +78,7 @@ function buscarEquipes() {
         });
 }
 
+// Busca os resultados de pilotos favoritos fazendo join com a tabela de pilotos
 function buscarPilotos() {
     var instrucaoSql = `
         SELECT p.nome as Piloto, count(*) as total
@@ -108,6 +115,7 @@ function buscarPilotos() {
         });
 }
 
+// Busca os resultados de GPs favoritos fazendo join com a tabela de GrandePremio
 function buscarGrandePremios() {
     var instrucaoSql = `
         SELECT G.nome as GrandePremio, count(*) as total
@@ -144,6 +152,7 @@ function buscarGrandePremios() {
         });
 }
 
+// Exporta todas as funções pra serem usadas no controller
 module.exports = {
     buscarResultadosGerais,
     buscarPilotos,

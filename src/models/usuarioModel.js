@@ -1,7 +1,11 @@
+// Importa o config do banco pra executar as queries
 var database = require("../database/config")
 
+// Busca um usuário no banco pelo email e senha pra fazer o login
 function autenticar(email, senha) {
-    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ", email, senha)
+    console.log("ACESSEI O USUARIO MODEL", email, senha)
+
+    // Query que procura o usuário com esse email e senha exatos
     var instrucaoSql = `
         SELECT id, nome, email as SiteF1 FROM usuario WHERE email = '${email}' AND senha = '${senha}';
     `;
@@ -9,12 +13,11 @@ function autenticar(email, senha) {
     return database.executar(instrucaoSql);
 }
 
-// Coloque os mesmos parâmetros aqui. Vá para a var instrucaoSql
-function cadastrar(nome, email, senha ) {
-    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():", nome, email, senha);
-    
-    // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
-    //  e na ordem de inserção dos dados.
+// Insere um novo usuário no banco com nome, email e senha
+function cadastrar(nome, email, senha) {
+    console.log("ACESSEI O USUARIO MODEL", nome, email, senha);
+
+    // Query que insere o novo usuário na tabela
     var instrucaoSql = `
         INSERT INTO usuario (nome, email, senha) VALUES ('${nome}', '${email}', '${senha}');
     `;
@@ -22,6 +25,7 @@ function cadastrar(nome, email, senha ) {
     return database.executar(instrucaoSql);
 }
 
+// Exporta as funções pra serem usadas no controller
 module.exports = {
     autenticar,
     cadastrar

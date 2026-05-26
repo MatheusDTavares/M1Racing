@@ -158,46 +158,52 @@
 <script>
 
 
+// Quando a página carregar, atualiza o menu e já busca os dados dos gráficos
 window.onload = function() {
     atualizarMenuProtegido();
     obterDadosGrafico();
 };
 
+// Faz todas as requisições pro servidor ao mesmo tempo e espera todas responderem
 function obterDadosGrafico() {
     Promise.all([
-        fetch('/resultado/piloto').then(r => r.json()),
-        fetch('/resultado/equipe').then(r => r.json()),
-        fetch('/resultado/tempo').then(r => r.json()),
-        fetch('/resultado/interesse').then(r => r.json()),
-        fetch('/resultado/curiosidade').then(r => r.json()),
-        fetch('/resultado/grandepremio').then(r => r.json())
+        fetch('/resultado/piloto').then(r => r.json()),      // busca votos de pilotos
+        fetch('/resultado/equipe').then(r => r.json()),      // busca votos de equipes
+        fetch('/resultado/tempo').then(r => r.json()),       // busca há quanto tempo acompanha
+        fetch('/resultado/interesse').then(r => r.json()),   // busca o que assiste
+        fetch('/resultado/curiosidade').then(r => r.json()), // busca era favorita
+        fetch('/resultado/grandepremio').then(r => r.json()) // busca GP favorito
     ])
     .then(function([piloto, equipe, tempo, interesse, curiosidade, grandepremio]) {
+        // Quando tudo chegar, manda plotar os gráficos
         plotarGrafico({ piloto, equipe, tempo, interesse, curiosidade, grandepremio });
     })
     .catch(function(erro) {
+        // Se qualquer requisição falhar, loga o erro no console
         console.error('Erro ao buscar dados:', erro);
     });
 }
 
+// Cria um gráfico no canvas indicado com os dados recebidos
 function criarGrafico(idCanvas, labels, valores, tipo, cor) {
     new Chart(document.getElementById(idCanvas), {
-        type: tipo,
+        type: tipo, // tipo do gráfico — 'bar' ou 'pie'
         data: {
-            labels: labels,
+            labels: labels,   // nomes que aparecem no eixo ou na legenda
             datasets: [{
                 label: 'Total',
-                data: valores,
-                backgroundColor: cor
+                data: valores,          // valores de cada barra ou fatia
+                backgroundColor: cor    // cor ou array de cores do gráfico
             }]
         },
         options: {
             plugins: {
                 legend: {
-                    display: tipo === 'pie',
+                    display: tipo === 'pie', // só mostra legenda no gráfico de pizza
                     labels: { color: '#fff' }
                 }
             },
+            // Configura os eixos só se for gráfico de barras — pizza não tem eixo
             scales: tipo === 'bar' ? {
                 x: { ticks: { color: '#fff' }, grid: { color: '#444' } },
                 y: { ticks: { color: '#fff' }, grid: { color: '#444' } }
@@ -206,12 +212,15 @@ function criarGrafico(idCanvas, labels, valores, tipo, cor) {
     });
 }
 
-
+// Preenche os cards de KPI com o mais votado e o menos votado de cada pergunta
 function preencherKPI(idMaior, idMenor, dadoMaior, dadoMenor, campo) {
+
+    // Se tiver dado, mostra o nome e a quantidade de votos
     if (dadoMaior) {
         document.getElementById(idMaior).innerHTML =
             dadoMaior[campo] + " (" + dadoMaior.total + " votos)";
     } else {
+        // Se não tiver nenhum dado ainda, avisa na tela
         document.getElementById(idMaior).innerHTML = "Sem dados";
     }
 
@@ -223,17 +232,21 @@ function preencherKPI(idMaior, idMenor, dadoMaior, dadoMenor, campo) {
     }
 }
 
+// Plota todos os gráficos e preenche todos os KPIs de uma vez
 function plotarGrafico({ piloto, equipe, tempo, interesse, curiosidade, grandepremio }) {
 
+    // Gráfico de barras dos pilotos favoritos
     criarGrafico(
         'pilotoGrafico',
-        piloto[0].map(i => i.Piloto),
-        piloto[0].map(i => i.total),
+        piloto[0].map(i => i.Piloto), // pega os nomes dos pilotos
+        piloto[0].map(i => i.total),  // pega a quantidade de votos
         'bar',
-        '#e10600'
+        '#e10600' // vermelho F1
     );
+    // Preenche os KPIs de piloto mais e menos votado
     preencherKPI('maiorPiloto', 'menorPiloto', piloto[1], piloto[2], 'Piloto');
 
+    // Gráfico de pizza das equipes favoritas — cada equipe com sua cor oficial
     criarGrafico(
         'equipeGrafico',
         equipe[0].map(i => i.Equipe),
@@ -242,26 +255,32 @@ function plotarGrafico({ piloto, equipe, tempo, interesse, curiosidade, grandepr
         ['#e10600','#00d2be','#ff8700','#dc0000','#ffffff',
          '#0090ff','#006f62','#2b4562','#900000','#ff87bc','#52e252']
     );
+    // Preenche os KPIs de equipe mais e menos votada
     preencherKPI('maiorEquipe', 'menorEquipe', equipe[1], equipe[2], 'Equipe');
 
+    // Gráfico de barras de há quanto tempo acompanha a F1
     criarGrafico(
         'tempoGrafico',
         tempo[0].map(i => i.Tempo),
         tempo[0].map(i => i.total),
         'bar',
-        '#ff8700'
+        '#ff8700' // laranja
     );
+    // Preenche os KPIs de nível mais e menos comum
     preencherKPI('maiorTempo', 'menorTempo', tempo[1], tempo[2], 'Tempo');
 
+    // Gráfico de barras do que cada pessoa assiste
     criarGrafico(
         'interesseGrafico',
         interesse[0].map(i => i.Interesse),
         interesse[0].map(i => i.total),
         'bar',
-        '#00d2be'
+        '#00d2be' // verde água
     );
+    // Preenche os KPIs de interesse mais e menos comum
     preencherKPI('maiorInteresse', 'menorInteresse', interesse[1], interesse[2], 'Interesse');
 
+    // Gráfico de pizza da era favorita da F1
     criarGrafico(
         'curiosidadeGrafico',
         curiosidade[0].map(i => i.Curiosidade),
@@ -269,8 +288,10 @@ function plotarGrafico({ piloto, equipe, tempo, interesse, curiosidade, grandepr
         'pie',
         ['#e10600','#ff8700','#00d2be','#ffffff']
     );
+    // Preenche os KPIs de era mais e menos citada
     preencherKPI('maiorCuriosidade', 'menorCuriosidade', curiosidade[1], curiosidade[2], 'Curiosidade');
 
+    // Gráfico de barras do GP que a galera assistiria ao vivo
     criarGrafico(
         'grandepremioGrafico',
         grandepremio[0].map(i => i.GrandePremio),
@@ -278,6 +299,7 @@ function plotarGrafico({ piloto, equipe, tempo, interesse, curiosidade, grandepr
         'bar',
         ['#e10600','#888888','#00d2be']
     );
+    // Preenche os KPIs de GP mais e menos escolhido
     preencherKPI('maiorGrandePremio', 'menorGrandePremio', grandepremio[1], grandepremio[2], 'GrandePremio');
 }
 
