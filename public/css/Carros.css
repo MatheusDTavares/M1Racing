@@ -1,0 +1,132 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #0d0d0d;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* HERO */
+
+.hero{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero img{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    opacity: 30%;
+}
+
+.overlay{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+}
+
+.hero-text{
+    position: relative;
+    text-align: center;
+}
+
+.hero-text h1{
+    font-size: 6rem;
+    margin-bottom: 20px;
+
+    text-transform: uppercase;
+}
+
+.hero-text p{
+    font-size: 1.5rem;
+    color: #d9d9d9;
+}
+
+/* HISTÓRIA */
+
+.historia{
+    width: 80%;
+    margin: 100px auto;
+}
+
+.historia h2{
+    font-size: 3rem;
+    margin-bottom: 30px;
+
+    color: #ff1e1e;
+}
+
+.historia p{
+    margin-bottom: 25px;
+    font-size: 1.2rem;
+}
+
+/* INFOS */
+
+.infos{
+    width: 80%;
+    margin: 100px auto;
+
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.infos img{
+    width: 500px;
+    border-radius: 15px;
+}
+
+.card-info{
+    flex: 1;
+    background: rgba(0,0,0,0.6);
+    padding: 40px;
+    border-radius: 15px;
+}
+
+.card-info h2{
+    margin-bottom: 30px;
+    color: #ff1e1e;
+}
+
+.item{
+    margin-bottom: 20px;
+}
+
+.item span{
+    font-size: 15px;
+    color: gray;
+}
+
+.item p{
+    font-size: 20px;
+    margin-top: 5px;
+}
+
+/* LEGADO */
+
+.legado{
+    width: 80%;
+    margin: 100px auto;
+    padding-bottom: 30px;
+}
+
+.legado h2{
+    font-size: 26px;
+    margin-bottom: 30px;
+    color: #ff1e1e;
+}
+
+.legado p{
+    font-size: 15px;
+}

@@ -42,7 +42,7 @@
         <div class="sim-controls">
             <div>
                 <div class="sim-label">Escolha seu piloto</div>
-                <select class="sim-select" id="ipt_aposta">
+                <select class="sim-select" id="ipt_pilotos">
                     <option value="0">Alexander Albon</option>
                     <option value="1">Kimi Antonelli</option>
                     <option value="2">Carlos Sainz</option>
@@ -103,7 +103,7 @@
     window.onload = function () {
         const nome = sessionStorage.NOME_USUARIO;
         if (nome) {
-            document.getElementById("menuLogin").innerHTML = `<a href="./perfil.html">${nome}</a>`;
+            document.getElementById("menuLogin").innerHTML = `<a href="./index.html">${nome}</a>`;
             document.getElementById("menuCadastro").style.display = "none";
         }
     };
