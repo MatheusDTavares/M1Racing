@@ -272,10 +272,10 @@ li {
 }
 
 .f1 img{
-  width: 950px;
-  height: auto;
-  border-radius: 10px;
-  gap: 20px;
+  width: fit-content;
+  height: fit-content;
+  border-radius: 35px;
+  margin-left: 20px;
   
 }
 .f1 .container {
